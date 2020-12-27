@@ -23,13 +23,7 @@ We will use ```jq``` to process JSON responses from API later in the process
 
 ### Install Casperlabs node
 
-```
-cd ~
-
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.3.1-3423_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_0.3.1-3423_amd64.deb
-sudo apt install -y ./casper-node_0.3.1-3423_amd64.deb ./casper-client_0.3.1-3423_amd64.deb 
-```
+[include install-casper-node.md]
 
 ## Build smart contracts that are required to bond to the network 
 
