@@ -21,9 +21,3 @@ Make sure you bid less than you have in your account. In case you bid all you ha
 Check the transaction status to ensure it went through:
 
 [include casper-client/check-transaction-status.md]
-
-## I do not see my bid in the auction info
-
-Check the transaction status to ensure it went through:
-
-[include casper-client/check-transaction-status.md]
