@@ -1,0 +1,1 @@
+Go to [Clarity](https://clarity.casperlabs.io/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select the file containing the hex representation of you public key ```public_key_hex```. Give it a name and hit "Save".  
