@@ -1,6 +1,8 @@
 ## Run the node
 
-### Get the trusted hash value from an already bonded validator
+### Set trusted hash
+
+Get the trusted hash value from an already bonded validator
 
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
@@ -9,7 +11,7 @@ KNOWN_VALIDATOR_IP=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <
 curl -s http://$KNOWN_VALIDATOR_IP:7777/status | jq .last_added_block_info.hash
 ```
 
-### If the hash is not null update trusted_hash property at the top of the config file
+If the hash is not null update ```trusted_hash``` property at the top of the config file. If it is null make sure it is commented in the file.
 
 ```
 sudo nano /etc/casper/config.toml
@@ -18,7 +20,7 @@ sudo nano /etc/casper/config.toml
 ### Start the node
 sudo systemctl start casper-node
 
-### Monitor the situation
+### Monitor the node status
 
 #### Check the node log
 

@@ -26,4 +26,4 @@ Check your balance to ensure you have funds to bond:
 
 [include ../casper-client/check-auction-info.md]
 
-[include get-known-validator-ip.md]
+[include casper-client/check-auction-info.md]

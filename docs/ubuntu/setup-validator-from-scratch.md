@@ -108,7 +108,9 @@ To fund an account visit the [Faucet](https://clarity.casperlabs.io/#/faucet) pa
 
 ## Run the node
 
-### Get the trusted hash value from an already bonded validator
+### Set trusted hash
+
+Get the trusted hash value from an already bonded validator
 
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
@@ -117,7 +119,7 @@ KNOWN_VALIDATOR_IP=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <
 curl -s http://$KNOWN_VALIDATOR_IP:7777/status | jq .last_added_block_info.hash
 ```
 
-### If the hash is not null update trusted_hash property at the top of the config file
+If the hash is not null update ```trusted_hash``` property at the top of the config file. If it is null make sure it is commented in the file.
 
 ```
 sudo nano /etc/casper/config.toml
@@ -126,7 +128,7 @@ sudo nano /etc/casper/config.toml
 ### Start the node
 sudo systemctl start casper-node
 
-### Monitor the situation
+### Monitor the node status
 
 #### Check the node log
 
@@ -237,14 +239,8 @@ casper-client get-deploy --node-address http://<KNOWN_VALIDATOR_IP>:7777 <DEPLOY
 
 Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to check.
 
-Run the following script to get known validator IP:
-
-```
-KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
-grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES"
-```
-
 If you followed the installation steps from this document you can run the following script to get a known validator IP:
+
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
 grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES"
@@ -260,8 +256,8 @@ casper-client get-auction-info --node-address http://<KNOWN_VALIDATOR_IP>:7777
 
 The bid should appear among the returned ```bids```. If the public key associated with a bid appears in the ```validator_weights``` structure for an era, then the account is bonded in that era.
 
-If you followed the installation steps from this document you can run the following script to get a known validator IP:
+If you followed the installation steps from this document you can run the following command:
+
 ```
-KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
-grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES"
+casper-client get-auction-info --node-address http://$KNOWN_VALIDATOR_IP:7777
 ```
