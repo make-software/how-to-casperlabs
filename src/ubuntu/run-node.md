@@ -18,7 +18,10 @@ sudo nano /etc/casper/config.toml
 ```
 
 ### Start the node
+
+```
 sudo systemctl start casper-node
+```
 
 ### Monitor the node status
 
