@@ -56,11 +56,7 @@ git clone git://github.com/CasperLabs/casper-node.git
 cd casper-node/
 ```
 
-#### Checkout the release branch:
-
-```
-git checkout release-0.3.1
-```
+[include checkout-release-branch.md]
 
 #### Build the contracts:
 

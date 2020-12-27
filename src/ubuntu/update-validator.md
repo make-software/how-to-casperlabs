@@ -43,11 +43,7 @@ cd ~/casper-node
 git pull
 ```
 
-#### Checkout the release branch:
-
-```
-git checkout release-0.3.1
-```
+[include checkout-release-branch.md]
 
 #### Remove previous builds
 
