@@ -62,13 +62,13 @@ git clone git://github.com/CasperLabs/casper-node.git
 cd casper-node/
 ```
 
-#### Checkout the release branch:
+#### Checkout the release branch
 
 ```
 git checkout release-0.3.1
 ```
 
-#### Build the contracts:
+#### Build the contracts
 
 ```
 make setup-rs

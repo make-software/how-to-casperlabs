@@ -58,7 +58,7 @@ cd casper-node/
 
 [include checkout-release-branch.md]
 
-#### Build the contracts:
+#### Build the contracts
 
 ```
 make setup-rs
