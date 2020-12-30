@@ -143,6 +143,8 @@ After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will con
 
 ### Set trusted hash
 
+Get the trusted hash from the network:
+
 ```
 curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .last_added_block_info.hash
 ```
