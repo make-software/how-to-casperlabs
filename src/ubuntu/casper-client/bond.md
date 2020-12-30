@@ -1,7 +1,6 @@
 If you followed the installation steps from this document you can run the following script to bond. It substitutes the public key hex value for you and sends recommended argument values:
 
 ```
-[include ../get-known-validator-ip-script.md]
 PUBLIC_KEY_HEX=$(cat /etc/casper/validator_keys/public_key_hex)
 CHAIN_NAME=$(curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq -r '.chainspec_name')
 
