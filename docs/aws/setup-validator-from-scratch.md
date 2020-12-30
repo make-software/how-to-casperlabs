@@ -45,9 +45,9 @@ We will use ```jq``` to process JSON responses from API later in the process
 ```
 cd ~
 
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.3.1-3423_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_0.3.1-3423_amd64.deb
-sudo apt install -y ./casper-node_0.3.1-3423_amd64.deb ./casper-client_0.3.1-3423_amd64.deb 
+curl -JLO https://bintray.com/casperlabs/casper-debian-tests/download_file?file_path=casper-node_0.4.0-3480_amd64.deb
+curl -JLO https://bintray.com/casperlabs/casper-debian-tests/download_file?file_path=casper-client_0.4.0-3480_amd64.deb
+sudo apt install -y ./casper-node_0.4.0-3480_amd64.deb ./casper-client_0.4.0-3480_amd64.deb  
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -84,7 +84,7 @@ cd casper-node/
 #### Checkout the release branch
 
 ```
-git checkout release-0.3.1
+git checkout release-0.4.0
 ```
 
 #### Build the contracts
@@ -217,7 +217,7 @@ casper-client put-deploy \
         --chain-name "<CHAIN_NAME>" \
         --node-address "http://127.0.0.1:7777/" \
         --secret-key "/etc/casper/validator_keys/secret_key.pem" \
-        --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
+        --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/do_bid.wasm" \
         --payment-amount 1000000000 \
         --session-arg=public_key:"public_key='<PUBLIC_KEY_HEX>'" \
         --session-arg=amount:"u512='9000000000000000'" \
@@ -246,7 +246,7 @@ casper-client put-deploy \
     --chain-name "$CHAIN_NAME" \
     --node-address "http://$KNOWN_VALIDATOR_IP:7777/" \
     --secret-key "/etc/casper/validator_keys/secret_key.pem" \
-    --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
+    --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/do_bid.wasm" \
     --payment-amount 1000000000 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
     --session-arg=amount:"u512='9000000000000000'" \
