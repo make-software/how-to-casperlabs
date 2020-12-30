@@ -2,7 +2,8 @@ If you followed the installation steps from this document you can run the follow
 
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
-KNOWN_VALIDATOR_IP=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
+KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
+IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 PUBLIC_KEY_HEX=$(cat /etc/casper/validator_keys/public_key_hex)
 CHAIN_NAME=$(curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq -r '.chainspec_name')
 

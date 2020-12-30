@@ -5,8 +5,7 @@
 Get the trusted hash value from an already bonded validator
 
 ```
-KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
-KNOWN_VALIDATOR_IP=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
+[include get-known-validator-ip-script.md]
 
 curl -s http://$KNOWN_VALIDATOR_IP:7777/status | jq .last_added_block_info.hash
 ```
