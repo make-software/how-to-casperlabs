@@ -18,9 +18,7 @@ Check your balance to ensure you have funds to bond:
 
 ### Check that you bonding request worked
 
-[include ../casper-client/check-transaction-status.md]
-
-[include get-known-validator-ip.md]
+[include casper-client/check-transaction-status.md]
 
 ### Query the auction info and look for your bid
 
