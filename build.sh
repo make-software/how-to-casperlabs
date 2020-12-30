@@ -16,7 +16,14 @@ function readAndResolveIncludes() {
 
 rm -rf docs/*
 
-files=($(find src -type f -name '*.md'))
+#files=($(find src -type f -name '*.md'))
+files=(
+    src/aws/setup-validator-from-scratch.md
+    src/ubuntu/setup-validator-from-scratch.md
+    src/ubuntu/update-validator.md
+    src/faq.md
+)
+
 for file in ${files[*]}
 do
     outfile="docs/${file#src/}"
