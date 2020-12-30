@@ -1,14 +1,22 @@
 ## Run the node
 
-### Set trusted hash
+### Get known validator IP
 
-Get the trusted hash value from an already bonded validator
+Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
+echo $KNOWN_VALIDATOR_IP
+```
+
+After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will contain IP address of a known validator.
+
+### Set trusted hash
+
+```
 curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .last_added_block_info.hash
 ```
 

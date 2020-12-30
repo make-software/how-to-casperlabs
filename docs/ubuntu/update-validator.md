@@ -88,15 +88,23 @@ sudo /etc/casper/delete_local_db.sh
 
 ## Run the node
 
-### Set trusted hash
+### Get known validator IP
 
-Get the trusted hash value from an already bonded validator
+Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
 KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
+echo $KNOWN_VALIDATOR_IP
+```
+
+After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will contain IP address of a known validator.
+
+### Set trusted hash
+
+```
 curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .last_added_block_info.hash
 ```
 
@@ -228,13 +236,7 @@ Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to 
 To determine if the bid was accepted, execute the following command:
 
 ```
-casper-client get-auction-info --node-address http://<KNOWN_VALIDATOR_IP>:7777
+casper-client get-auction-info --node-address http://$KNOWN_VALIDATOR_IP:7777
 ```
 
 The bid should appear among the returned ```bids```. If the public key associated with a bid appears in the ```validator_weights``` structure for an era, then the account is bonded in that era.
-
-If you followed the installation steps from this document you can run the following command:
-
-```
-casper-client get-auction-info --node-address http://$KNOWN_VALIDATOR_IP:7777
-```

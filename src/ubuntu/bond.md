@@ -22,6 +22,4 @@ Check your balance to ensure you have funds to bond:
 
 ### Query the auction info and look for your bid
 
-[include ../casper-client/check-auction-info.md]
-
 [include casper-client/check-auction-info.md]
