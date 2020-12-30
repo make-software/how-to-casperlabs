@@ -9,4 +9,4 @@ This a short documentation aimed to help newcomers to get started with Casperlab
 
 ## Have questions?
 
-Go to the [#validators channel on Discord](https://discord.gg/cuEmVKdM)
+Go to the [#validators](https://discord.gg/cuEmVKdM) channel on Discord
