@@ -7,7 +7,7 @@ Get the trusted hash value from an already bonded validator
 ```
 [include get-known-validator-ip-script.md]
 
-curl -s http://$KNOWN_VALIDATOR_IP:7777/status | jq .last_added_block_info.hash
+curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .last_added_block_info.hash
 ```
 
 If the hash is not null update ```trusted_hash``` property at the top of the config file. If it is null make sure it is commented in the file.
