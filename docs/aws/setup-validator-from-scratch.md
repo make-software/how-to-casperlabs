@@ -162,7 +162,7 @@ tail -n100 -f /var/log/casper/casper-node.log
 #### Check if a known validator sees your node among peers
 
 ```
-curl -s http://$KNOWN_VALIDATOR_IP:7777/status | jq .peers
+curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .peers
 ```
 
 You should see your IP address on the list
@@ -170,7 +170,7 @@ You should see your IP address on the list
 #### Check the node status
 
 ```
-curl -s http://127.0.0.1:7777/status
+curl -s http://127.0.0.1:8888/status
 ```
 
 ## Bond to the network
