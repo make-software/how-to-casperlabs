@@ -1,6 +1,6 @@
 # Setup delta testnet validator node from scratch on Ubuntu 20.04 on AWS
 
-## Create a security group 
+## Create security group 
 
 Create casperlabs-validator security group that exposes the following ports to public:
 
