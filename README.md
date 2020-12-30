@@ -1,6 +1,6 @@
 # How to Casperlabs
 
-This a short documentation aimed to help newcomers to get started with Casperlabs validator node. Please navigate to the doc that suits you most:
+This a short documentation aimed to help newcomers to get started with Casperlabs validator node.
 
 - [Set up validator node from scratch on AWS](/docs/aws/setup-validator-from-scratch.md)
 - [Set up validator node from scratch on Ubuntu](/docs/ubuntu/setup-validator-from-scratch.md)
