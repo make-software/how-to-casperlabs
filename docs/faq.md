@@ -2,7 +2,7 @@
 
 ## My node is running but is not visible by peers
 
-Check that you opened the 35555 port in your firewall settings and the node listens to it:
+Check that you opened the 35000 port in your firewall settings and the node listens to it:
 
 ```
 sudo netstat -tulpn
