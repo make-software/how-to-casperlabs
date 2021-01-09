@@ -147,7 +147,13 @@ sudo systemctl start casper-node
 #### Check the node log
 
 ```
-tail -n100 -f /var/log/casper/casper-node.log
+sudo tail -n100 -f /var/log/casper/casper-node.log
+```
+
+#### Check that there are no errors
+
+```
+journalctl -u casper-node --no-pager -e
 ```
 
 #### Check if a known validator sees your node among peers
