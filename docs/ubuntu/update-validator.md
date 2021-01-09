@@ -28,9 +28,9 @@ sudo apt remove -y casper-client casper-node
 ```
 cd ~
 
-curl -JLO https://bintray.com/casperlabs/casper-debian-tests/download_file?file_path=casper-node_0.4.0-3480_amd64.deb
-curl -JLO https://bintray.com/casperlabs/casper-debian-tests/download_file?file_path=casper-client_0.4.0-3480_amd64.deb
-sudo apt install -y ./casper-node_0.4.0-3480_amd64.deb ./casper-client_0.4.0-3480_amd64.deb  
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.5.1-3583_amd64.deb
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_0.5.1-3583_amd64.deb
+sudo apt install -y ./casper-node_0.5.1-3583_amd64.deb ./casper-client_0.5.1-3583_amd64.deb 
 ```
 
 ## Re-build smart contracts that are required to bond to the network 
@@ -52,7 +52,7 @@ git pull
 #### Checkout the release branch
 
 ```
-git checkout release-0.4.0
+git checkout v0.5.1
 ```
 
 #### Remove previous builds

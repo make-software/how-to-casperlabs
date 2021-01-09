@@ -1,5 +1,5 @@
 #### Checkout the release branch
 
 ```
-git checkout release-0.4.0
+git checkout v0.5.1
 ```
