@@ -24,11 +24,9 @@ We will use ```jq``` to process JSON responses from API later in the process
 ### Install Casperlabs node
 
 ```
-cd ~
-
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.5.1-3583_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_0.5.1-3583_amd64.deb
-sudo apt install -y ./casper-node_0.5.1-3583_amd64.deb ./casper-client_0.5.1-3583_amd64.deb 
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.2.0-0_amd64.deb
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.7.6-0_amd64.deb
+sudo apt install -y ./casper-client_0.7.6-0_amd64.deb ./casper-node-launcher_0.2.0-0_amd64.deb
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -65,7 +63,7 @@ cd casper-node/
 #### Checkout the release branch
 
 ```
-git checkout v0.5.1
+git checkout release-0.7.6
 ```
 
 #### Build the contracts
@@ -106,14 +104,21 @@ Go to [Clarity](https://clarity.casperlabs.io/#/accounts) and login using your G
 To fund an account visit the [Faucet](https://clarity.casperlabs.io/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
 
 
-## Run the node
+## Configure and Run the Node
+
+### Set up configuration
+
+```
+cd /etc/casper
+sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION
+```
 
 ### Get known validator IP
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(cat /etc/casper/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
@@ -127,19 +132,17 @@ After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will con
 Get the trusted hash from the network:
 
 ```
-curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .last_added_block_info.hash
-```
-
-If the hash is not null update ```trusted_hash``` property at the top of the config file. If it is null make sure it is commented in the file.
-
-```
-sudo nano /etc/casper/config.toml
+# Get trusted_hash into config.toml
+sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')'" /etc/casper/$CASPER_VERSION/config.toml
 ```
 
 ### Start the node
 
 ```
-sudo systemctl start casper-node
+sudo logrotate -f /etc/logrotate.d/casper-node
+sudo /etc/casper/delete_local_db.sh; sleep 1
+sudo systemctl start casper-node-launcher
+systemctl status casper-node-launcher
 ```
 
 ### Monitor the node status
@@ -147,13 +150,7 @@ sudo systemctl start casper-node
 #### Check the node log
 
 ```
-sudo tail -n100 -f /var/log/casper/casper-node.log
-```
-
-#### Check that there are no errors
-
-```
-journalctl -u casper-node --no-pager -e
+sudo tail -fn100 /var/log/casper/casper-node.log /var/log/casper/casper-node.stderr.log
 ```
 
 #### Check if a known validator sees your node among peers
@@ -168,6 +165,17 @@ You should see your IP address on the list
 
 ```
 curl -s http://127.0.0.1:8888/status
+```
+
+#### Wait for node to catch up
+Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully 
+caught up with the network. You can recognize this by log entries that tell you that joining has finished, and that the
+RPC and REST servers have started:
+
+```
+{"timestamp":"Feb 09 02:28:35.577","level":"INFO","fields":{"message":"finished joining"},"target":"casper_node::cli"}
+{"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started JSON-RPC server","address":"0.0.0.0:7777"},"target":"casper_node::components::rpc_server::http_server"}
+{"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started REST server","address":"0.0.0.0:8888"},"target":"casper_node::components::rest_server::http_server"}
 ```
 
 ## Bond to the network
@@ -217,6 +225,7 @@ casper-client put-deploy \
         --secret-key "/etc/casper/validator_keys/secret_key.pem" \
         --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
         --payment-amount 1000000000 \
+        --gas-price=1 \
         --session-arg=public_key:"public_key='<PUBLIC_KEY_HEX>'" \
         --session-arg=amount:"u512='9000000000000000'" \
         --session-arg=delegation_rate:"u64='10'"
@@ -236,14 +245,15 @@ If you followed the installation steps from this document you can run the follow
 
 ```
 PUBLIC_KEY_HEX=$(cat /etc/casper/validator_keys/public_key_hex)
-CHAIN_NAME=$(curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq -r '.chainspec_name')
+CHAIN_NAME=$(curl -s http://127.0.0.1:8888/status | jq -r '.chainspec_name')
 
 casper-client put-deploy \
     --chain-name "$CHAIN_NAME" \
-    --node-address "http://$KNOWN_VALIDATOR_IP:7777/" \
+    --node-address "http://127.0.0.1:7777/" \
     --secret-key "/etc/casper/validator_keys/secret_key.pem" \
     --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
     --payment-amount 1000000000 \
+    --gas-price=1 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
     --session-arg=amount:"u512='9000000000000000'" \
     --session-arg=delegation_rate:"u64='10'"
@@ -254,7 +264,7 @@ casper-client put-deploy \
 Sending a transaction to the network does not mean that the transaction processed successfully. It’s important to check to see that the contract executed properly:
 
 ```
-casper-client get-deploy --node-address http://$KNOWN_VALIDATOR_IP:7777 <DEPLOY_HASH> | jq .result.execution_results
+casper-client get-deploy --node-address http://127.0.0.1:7777 <DEPLOY_HASH> | jq .result.execution_results
 ```
 
 Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to check.
@@ -264,7 +274,7 @@ Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to 
 To determine if the bid was accepted, execute the following command:
 
 ```
-casper-client get-auction-info --node-address http://$KNOWN_VALIDATOR_IP:7777
+casper-client get-auction-info --node-address http://127.0.0.1:7777
 ```
 
 The bid should appear among the returned ```bids```. If the public key associated with a bid appears in the ```validator_weights``` structure for an era, then the account is bonded in that era.
