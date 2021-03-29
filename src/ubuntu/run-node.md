@@ -3,11 +3,15 @@
 ### Set up configuration
 
 ```
-cd /etc/casper
-sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION $CASPER_NETWORK
+sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
 ### Get known validator IP
+
+> **Note**  
+> Getting a known validator IP and setting your trusted hash is only required if you are joining
+> a network after Genesis. If you are a Genesis validator no trusted hash is needed.
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
@@ -34,8 +38,7 @@ sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:888
 
 ```
 sudo logrotate -f /etc/logrotate.d/casper-node
-sudo /etc/casper/delete_local_db.sh; sleep 1
-sudo systemctl start casper-node-launcher
+sudo systemctl start casper-node-launcher; sleep 2
 systemctl status casper-node-launcher
 ```
 

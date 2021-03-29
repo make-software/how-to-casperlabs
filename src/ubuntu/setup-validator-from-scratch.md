@@ -1,7 +1,18 @@
-# Setup delta testnet validator node from scratch on Ubuntu 20.04
+# Setup a validator node from scratch on Ubuntu 20.04
 
 > **Note**  
 > Do not execute all the commands below as root. sudo is included where it is required. 
+
+## Set version and network you're going to set up
+
+Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
+
+```CASPER_VERSION=1_0_0```
+
+Set a variable defining the network name you're trying to set up.
+
+```CASPER_NETWORK=mainnet```
+
 
 ## Install software
 
@@ -21,7 +32,13 @@ sudo apt install jq
 
 We will use ```jq``` to process JSON responses from API later in the process
 
-### Install Casperlabs node
+### Remove Previous Versions
+
+If you were running previous versions of the casper-node on this machine, first stop and remove the old versions:
+
+[include remove-casper-node.md]
+
+### Install Casper node
 
 [include install-casper-node.md]
 

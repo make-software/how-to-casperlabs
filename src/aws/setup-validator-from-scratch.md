@@ -7,11 +7,11 @@ Create casperlabs-validator security group that exposes the following ports to p
 - 7777 - rpc port
 - 8888 - status port
 - 9999 - event stream port
-- 35555 - gossip port
+- 35000 - gossip port
 
 ## Launch instance 
 
-Launch a m5.xlarge using Ubuntu Server 20.04 LTS AMI with 250 GB EBS volume, attach the casperlabs-validator security group to it
+Launch an appropriately powered instance using Ubuntu Server 20.04 LTS AMI and at least a 2TB EBS volume, and attach the casperlabs-validator security group to it
 
 ## Create elastic IP
 

@@ -1,7 +1,18 @@
-# Setup delta testnet validator node from scratch on Ubuntu 20.04
+# Setup a validator node from scratch on Ubuntu 20.04
 
 > **Note**  
 > Do not execute all the commands below as root. sudo is included where it is required. 
+
+## Set version and network you're going to set up
+
+Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
+
+```CASPER_VERSION=1_0_0```
+
+Set a variable defining the network name you're trying to set up.
+
+```CASPER_NETWORK=mainnet```
+
 
 ## Install software
 
@@ -21,12 +32,33 @@ sudo apt install jq
 
 We will use ```jq``` to process JSON responses from API later in the process
 
-### Install Casperlabs node
+### Remove Previous Versions
+
+If you were running previous versions of the casper-node on this machine, first stop and remove the old versions:
 
 ```
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.2.0-0_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.7.6-0_amd64.deb
-sudo apt install -y ./casper-client_0.7.6-0_amd64.deb ./casper-node-launcher_0.2.0-0_amd64.deb
+sudo systemctl stop casper-node-launcher.service
+sudo apt remove -y casper-client
+sudo apt remove -y casper-node-launcher
+sudo rm /etc/casper/casper-node-launcher-state.toml
+sudo rm -rf /etc/casper/1_0_*
+sudo rm -rf /var/lib/casper/*
+```
+
+### Install Casper node
+
+> **Note**  
+> Different networks (e.g. Main Net, Test Net) may use different binaries, and the versions references below may be 
+> outdated, or not appropriate for the network you're trying to join. First verify the binary version you need
+> before installing!
+> 
+> The binaries below are for Casper Node v0.9.4, pre-main-net
+
+```
+cd ~
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.3.2-0_amd64.deb
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.9.4-0_amd64.deb
+sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_0.9.4-0_amd64.deb
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -62,8 +94,12 @@ cd casper-node/
 
 #### Checkout the release branch
 
+> **Note**  
+> Verify that the version of your contracts matches the version of the casper-node software you have
+> installed.
+
 ```
-git checkout release-0.7.6
+git checkout release-0.9.4
 ```
 
 #### Build the contracts
@@ -97,11 +133,11 @@ Save your keys to a safe place.
 
 ### Create account
 
-Go to [Clarity](https://clarity.casperlabs.io/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select the file containing the hex representation of you public key ```public_key_hex```. Give it a name and hit "Save".  
+Go to [Clarity](https://clarity.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select the file containing the hex representation of you public key ```public_key_hex```. Give it a name and hit "Save".  
 
 ### Fund account
 
-To fund an account visit the [Faucet](https://clarity.casperlabs.io/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
+To fund an account visit the [Faucet](https://clarity.make.services/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
 
 
 ## Configure and Run the Node
@@ -109,11 +145,15 @@ To fund an account visit the [Faucet](https://clarity.casperlabs.io/#/faucet) pa
 ### Set up configuration
 
 ```
-cd /etc/casper
-sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION $CASPER_NETWORK
+sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
 ### Get known validator IP
+
+> **Note**  
+> Getting a known validator IP and setting your trusted hash is only required if you are joining
+> a network after Genesis. If you are a Genesis validator no trusted hash is needed.
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
@@ -140,8 +180,7 @@ sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:888
 
 ```
 sudo logrotate -f /etc/logrotate.d/casper-node
-sudo /etc/casper/delete_local_db.sh; sleep 1
-sudo systemctl start casper-node-launcher
+sudo systemctl start casper-node-launcher; sleep 2
 systemctl status casper-node-launcher
 ```
 

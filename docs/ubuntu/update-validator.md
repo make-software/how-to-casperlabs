@@ -31,10 +31,18 @@ sudo rm /etc/casper/validation.md5
 
 ### Download and install new node software
 
+> **Note**  
+> Different networks (e.g. Main Net, Test Net) may use different binaries, and the versions references below may be 
+> outdated, or not appropriate for the network you're trying to join. First verify the binary version you need
+> before installing!
+> 
+> The binaries below are for Casper Node v0.9.4, pre-main-net
+
 ```
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.2.0-0_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.7.6-0_amd64.deb
-sudo apt install -y ./casper-client_0.7.6-0_amd64.deb ./casper-node-launcher_0.2.0-0_amd64.deb
+cd ~
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.3.2-0_amd64.deb
+curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.9.4-0_amd64.deb
+sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_0.9.4-0_amd64.deb
 ```
 
 ## Configure and Run the Node
@@ -42,11 +50,15 @@ sudo apt install -y ./casper-client_0.7.6-0_amd64.deb ./casper-node-launcher_0.2
 ### Set up configuration
 
 ```
-cd /etc/casper
-sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION $CASPER_NETWORK
+sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
 ### Get known validator IP
+
+> **Note**  
+> Getting a known validator IP and setting your trusted hash is only required if you are joining
+> a network after Genesis. If you are a Genesis validator no trusted hash is needed.
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
@@ -73,8 +85,7 @@ sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:888
 
 ```
 sudo logrotate -f /etc/logrotate.d/casper-node
-sudo /etc/casper/delete_local_db.sh; sleep 1
-sudo systemctl start casper-node-launcher
+sudo systemctl start casper-node-launcher; sleep 2
 systemctl status casper-node-launcher
 ```
 
@@ -137,8 +148,12 @@ git fetch
 
 #### Checkout the release branch
 
+> **Note**  
+> Verify that the version of your contracts matches the version of the casper-node software you have
+> installed.
+
 ```
-git checkout release-0.7.6
+git checkout release-0.9.4
 ```
 
 #### Remove previous builds
@@ -155,7 +170,7 @@ make setup-rs && make build-client-contracts -j
 
 ## Fund your account
 
-To fund an account visit the [Faucet](https://clarity.casperlabs.io/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
+To fund an account visit the [Faucet](https://clarity.make.services/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
 
 ## Bond to the network
 
