@@ -9,9 +9,9 @@ Set a variable defining the version of the node package you're setting up. For `
 
 ```CASPER_VERSION=1_0_0```
 
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `mainnet`, while for Test Net use `testnet`
+Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `testnet`
 
-```CASPER_NETWORK=testnet```
+```CASPER_NETWORK=casper```
 
 
 ## Install software
