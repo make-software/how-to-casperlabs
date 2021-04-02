@@ -152,7 +152,7 @@ Save your keys to a safe place.
 
 ### Create account
 
-Go to [Clarity](https://clarity.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select the file containing the hex representation of you public key ```public_key_hex```. Give it a name and hit "Save".  
+Go to [Clarity](https://clarity.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select you public key file ```public_key.pem```. Do NOT, EVER, upload your private key. Give it a name and hit "Save".  
 
 ### Fund account
 
