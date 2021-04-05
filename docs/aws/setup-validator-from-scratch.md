@@ -24,6 +24,12 @@ Create elastic IP and assign it to the instance
 
 ## Install software
 
+### Update package repositories
+
+```
+sudo apt-get update
+```
+
 ### Install pre-requisites
 
 ```
