@@ -3,16 +3,6 @@
 > **Note**  
 > Do not execute all the commands below as root. sudo is included where it is required. 
 
-## Set version you're going to set up
-
-Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
-
-```CASPER_VERSION=1_0_0```
-
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `testnet`
-
-```CASPER_NETWORK=casper```
-
 ## Update software
 
 ### Stop the node if it is running and remove old packages and configuration
@@ -50,6 +40,20 @@ sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_1.0
 ```
 
 ## Configure and Run the Node
+
+### Set version and network you're going to set up
+
+Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
+
+```
+CASPER_VERSION=1_0_0
+```
+
+Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `testnet`
+
+```
+CASPER_NETWORK=casper
+```
 
 ### Set up configuration
 
