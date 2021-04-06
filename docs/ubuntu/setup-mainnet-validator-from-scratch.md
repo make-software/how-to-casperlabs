@@ -266,7 +266,7 @@ casper-client get-balance --node-address http://127.0.0.1:7777 --purse-uref "$PU
 To bond to the network as a validator you need to submit your bid using ```casper-client```:
 
 ```
-casper-client put-deploy \
+sudo -u casper casper-client put-deploy \
         --chain-name "<CHAIN_NAME>" \
         --node-address "http://127.0.0.1:7777/" \
         --secret-key "/etc/casper/validator_keys/secret_key.pem" \
@@ -274,8 +274,8 @@ casper-client put-deploy \
         --payment-amount 1000000000 \
         --gas-price=1 \
         --session-arg=public_key:"public_key='<PUBLIC_KEY_HEX>'" \
-        --session-arg=amount:"u512='9000000000000000'" \
-        --session-arg=delegation_rate:"u64='10'"
+        --session-arg=amount:"u512='90000000000'" \
+        --session-arg=delegation_rate:"u8='10'"
 ```
 
 Where:
