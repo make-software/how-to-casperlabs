@@ -1,29 +1,60 @@
-# Update already installed delta testnet validator node on Ubuntu 20.04
+# Setup Test Net validator node from scratch on Ubuntu 20.04
 
 > **Note**  
-> Do not execute all the commands below as root. sudo is included where it is required. 
+> Do not execute all the commands below as root. sudo is included where it is required.
 
-## Update software
+## Set version and network you're going to set up
 
-### Stop the node if it is running and remove old packages and configuration
+Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
 
 ```
-sudo systemctl stop casper-node
-sudo systemctl stop casper-node-launcher
+CASPER_VERSION=1_0_0
+```
 
-cd ~
-sudo apt remove -y casper-node 
-sudo apt remove -y casper-client 
+Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `casper-test`
+
+```
+CASPER_NETWORK=casper-test
+```
+
+## Install software
+
+### Update package repositories
+
+```
+sudo apt-get update
+```
+
+### Install pre-requisites
+
+```
+sudo apt install dnsutils
+```
+
+The node uses ```dig``` to get external IP for autoconfig during the installation process
+
+### Install helpers
+
+```
+sudo apt install jq
+```
+
+We will use ```jq``` to process JSON responses from API later in the process
+
+### Remove Previous Versions
+
+If you were running previous versions of the casper-node on this machine, first stop and remove the old versions:
+
+```
+sudo systemctl stop casper-node-launcher.service
+sudo apt remove -y casper-client
 sudo apt remove -y casper-node-launcher
-
-# Clean up old genesis file location
-sudo rm /etc/casper/config.*
-sudo rm /etc/casper/accounts.csv 
-sudo rm /etc/casper/chainspec.toml 
-sudo rm /etc/casper/validation.md5
+sudo rm /etc/casper/casper-node-launcher-state.toml
+sudo rm -rf /etc/casper/1_0_*
+sudo rm -rf /var/lib/casper/*
 ```
 
-### Download and install new node software
+### Install Casper node
 
 > **Note**  
 > Different networks (e.g. Main Net, Test Net) may use different binaries, and the versions references below may be 
@@ -39,21 +70,85 @@ curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-c
 sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_1.0.0-0_amd64.deb
 ```
 
+## Build smart contracts that are required to bond to the network 
+
+### Install pre-requisites for building smart contracts
+
+```
+sudo apt purge --auto-remove cmake
+wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
+sudo apt update
+sudo apt install cmake
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+sudo apt install libssl-dev
+sudo apt install pkg-config
+sudo apt install build-essential
+```
+
+### Build smart contracts
+
+#### Pull sources
+
+Go to your home directory and clone the node repository. Later we will use this path to the smart contracts in our bonding request.
+
+```
+cd ~
+
+git clone git://github.com/CasperLabs/casper-node.git
+cd casper-node/
+```
+
+#### Checkout the release branch
+
+> **Note**  
+> Verify that the version of your contracts matches the version of the casper-node software you have
+> installed.
+
+```
+git checkout release-1.0.0
+```
+
+#### Build the contracts
+
+```
+make setup-rs
+make build-client-contracts -j
+```
+
+## Generate keys and fund your account 
+
+### Generate node keys
+
+Navigate to the default key directory:
+```
+cd /etc/casper/validator_keys
+```
+ 
+And execute the following command to generate the keys:
+```
+sudo -u casper casper-client keygen .
+```
+
+It will create three files in the ```/etc/casper/validator_keys``` directory:
+
+- ```secret_key.pem``` - your private key; never share it with anyone
+- ```public_key.pem``` - your public key
+- ```public_key_hex``` - hex representation of your public key; copy it to your machine to create an account
+
+Save your keys to a safe place. 
+
+### Create account
+
+Go to [Clarity](https://clarity-testnet.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select you public key file ```public_key.pem```. Do NOT, EVER, upload your private key. Give it a name and hit "Save".  
+
+### Fund account
+
+To fund an account visit the [Faucet](https://clarity-testnet.make.services/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
+
 ## Configure and Run the Node
-
-### Set version and network you're going to set up
-
-Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
-
-```
-CASPER_VERSION=1_0_0
-```
-
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `testnet`
-
-```
-CASPER_NETWORK=casper
-```
 
 ### Set up configuration
 
@@ -71,7 +166,7 @@ sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
@@ -86,7 +181,7 @@ Get the trusted hash from the network:
 
 ```
 # Get trusted_hash into config.toml
-sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')'" /etc/casper/$CASPER_VERSION/config.toml
+sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')'" /etc/casper/$CASPER_VERSION/config.toml
 ```
 
 ### Start the node
@@ -130,56 +225,6 @@ RPC and REST servers have started:
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started REST server","address":"0.0.0.0:8888"},"target":"casper_node::components::rest_server::http_server"}
 ```
 
-## Re-build smart contracts that are required to bond to the network 
-
-### Build smart contracts
-
-#### Get casper-node
-If you don't have it yet, clone casper-node:
-
-```
-cd ~
-git clone https://github.com/CasperLabs/casper-node.git
-```
-
-#### Go to the directory with casper-node sources
-
-```
-cd ~/casper-node
-```
-
-#### Pull the latest changes
-
-```
-git fetch
-```
-
-#### Checkout the release branch
-
-> **Note**  
-> Verify that the version of your contracts matches the version of the casper-node software you have
-> installed.
-
-```
-git checkout release-1.0.0
-```
-
-#### Remove previous builds
-
-```
-make clean
-```
-
-#### Build the contracts
-
-```
-make setup-rs && make build-client-contracts -j
-```
-
-## Fund your account
-
-To fund an account visit the [Faucet](https://clarity.make.services/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
-
 ## Bond to the network
 
 Once you ensure that your node is running correctly and is visible by other proceed to bonding.
@@ -210,9 +255,9 @@ To get the balance we need to perform the following three query commands:
 If you followed the installation steps from this document you can run the following script to check the balance:
 
 ```
-PUBLIC_KEY_HEX=$(cat /etc/casper/validator_keys/public_key_hex)
+PUBLIC_KEY_HEX=$(sudo -u casper cat /etc/casper/validator_keys/public_key_hex)
 STATE_ROOT_HASH=$(casper-client get-state-root-hash --node-address http://127.0.0.1:7777 | jq -r '.result | .state_root_hash')
-PURSE_UREF=$(casper-client query-state --node-address http://127.0.0.1:7777 --key "$PUBLIC_KEY_HEX" --state-root-hash "$STATE_ROOT_HASH" | jq -r '.result | .stored_value | .Account | .main_purse')
+PURSE_UREF=$(sudo -u casper casper-client query-state --node-address http://127.0.0.1:7777 --key "$PUBLIC_KEY_HEX" --state-root-hash "$STATE_ROOT_HASH" | jq -r '.result | .stored_value | .Account | .main_purse')
 casper-client get-balance --node-address http://127.0.0.1:7777 --purse-uref "$PURSE_UREF" --state-root-hash "$STATE_ROOT_HASH" | jq -r '.result | .balance_value'
 ```
 
@@ -246,10 +291,10 @@ Remember the ```deploy_hash``` returned in the response to query its status late
 If you followed the installation steps from this document you can run the following script to bond. It substitutes the public key hex value for you and sends recommended argument values:
 
 ```
-PUBLIC_KEY_HEX=$(cat /etc/casper/validator_keys/public_key_hex)
+PUBLIC_KEY_HEX=$(sudo -u casper cat /etc/casper/validator_keys/public_key_hex)
 CHAIN_NAME=$(curl -s http://127.0.0.1:8888/status | jq -r '.chainspec_name')
 
-casper-client put-deploy \
+sudo -u casper casper-client put-deploy \
     --chain-name "$CHAIN_NAME" \
     --node-address "http://127.0.0.1:7777/" \
     --secret-key "/etc/casper/validator_keys/secret_key.pem" \
@@ -258,7 +303,7 @@ casper-client put-deploy \
     --gas-price=1 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
     --session-arg=amount:"u512='9000000000000000'" \
-    --session-arg=delegation_rate:"u64='10'"
+    --session-arg=delegation_rate:"u8='10'"
 ```
 
 ### Check that you bonding request worked

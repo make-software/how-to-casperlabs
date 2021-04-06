@@ -1,4 +1,4 @@
-# Setup delta testnet validator node from scratch on Ubuntu 20.04 on AWS
+# Setup Test Net validator node from scratch on Ubuntu 20.04 on AWS
 
 ## Create security group 
 
@@ -17,4 +17,4 @@ Launch an appropriately powered instance using Ubuntu Server 20.04 LTS AMI and a
 
 Create elastic IP and assign it to the instance
 
-[include ../ubuntu/setup-validator-from-scratch.md]
+[include ../ubuntu/setup-testnet-validator-from-scratch.md]

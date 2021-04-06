@@ -1,19 +1,5 @@
 ## Configure and Run the Node
 
-### Set version and network you're going to set up
-
-Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
-
-```
-CASPER_VERSION=1_0_0
-```
-
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `testnet`
-
-```
-CASPER_NETWORK=casper
-```
-
 ### Set up configuration
 
 ```
@@ -30,7 +16,7 @@ sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
@@ -45,7 +31,7 @@ Get the trusted hash from the network:
 
 ```
 # Get trusted_hash into config.toml
-sudo sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')'" /etc/casper/$CASPER_VERSION/config.toml
+sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')'" /etc/casper/$CASPER_VERSION/config.toml
 ```
 
 ### Start the node

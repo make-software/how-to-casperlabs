@@ -1,8 +1,3 @@
-# Setup a validator node from scratch on Ubuntu 20.04
-
-> **Note**  
-> Do not execute all the commands below as root. sudo is included where it is required. 
-
 ## Install software
 
 ### Update package repositories
@@ -76,22 +71,3 @@ cd casper-node/
 make setup-rs
 make build-client-contracts -j
 ```
-
-## Generate keys and fund your account 
-
-### Generate node keys
-
-[include generate-keys.md]
-
-### Create account
-
-[include ../clarity/create-account.md]
-
-### Fund account
-
-[include ../clarity/fund-account.md]
-
-
-[include run-node.md]
-
-[include bond.md]
