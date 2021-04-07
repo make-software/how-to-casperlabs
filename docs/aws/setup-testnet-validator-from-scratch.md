@@ -10,7 +10,7 @@
 
 ## Create security group 
 
-Create casperlabs-validator security group that exposes the following ports to public:
+Create ```casperlabs-validator``` security group that exposes the following ports to public:
 
 - 7777 - rpc port
 - 8888 - status port
@@ -19,7 +19,7 @@ Create casperlabs-validator security group that exposes the following ports to p
 
 ## Launch instance 
 
-Launch an appropriately powered instance using Ubuntu Server 20.04 LTS AMI and at least a 2TB EBS volume, and attach the casperlabs-validator security group to it
+Launch an appropriately powered instance using Ubuntu Server 20.04 LTS AMI and at least a 2TB EBS volume, and attach the ```casperlabs-validator``` security group to it
 
 ## Create elastic IP
 
