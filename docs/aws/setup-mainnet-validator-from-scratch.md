@@ -4,13 +4,13 @@
 
 Create ```casperlabs-validator``` security group that exposes the following ports to public:
 
-- 8888 - status port
-- 35000 - gossip port
+- ```8888``` - status port
+- ```35000``` - gossip port
 
 The following ports should be exposed to your own IPs or security groups for private use:
 
-- 7777 - rpc port
-- 9999 - event stream port
+- ```7777``` - rpc port
+- ```9999``` - event stream port
 
 ## Launch instance 
 
