@@ -298,6 +298,7 @@ casper-client get-auction-info --node-address http://127.0.0.1:7777
 
 The bid should appear among the returned ```bids```. If the public key associated with a bid appears in the ```validator_weights``` structure for an era, then the account is bonded in that era.
 
-_The Casper Test Net is a program sponsored by the [DEVxDAO](https://devxdao.com). The rewards will be granted and calculated by the DEVxDAO.
+_Please note that the DEVxDAO is legally represented by the [Emerging Technology Association](https://www.emergingte.ch), as Swiss nonprofit association (ETA). 
+The Casper Testnet is a program implemented by the [DEVxDAO](https://devxdao.com). The rewards will be granted and calculated by the ETA on behalf of the DEVxDAO.
 MAKE Technology LLC has no control over the program sponsorship or the incentivized reward program, and is hosting these guides and documents as a service
 to the DEVxDAO and the Casper community only._
