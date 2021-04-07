@@ -22,8 +22,10 @@ Create elastic IP and assign it to the instance
 
 # Setup Main Net validator node from scratch on Ubuntu 20.04
 
-> **Note**  
-> Do not execute all the commands below as root. sudo is included where it is required.
+> ### Note  
+> Do not execute all the commands below as root. `sudo` is included where it is required.
+> 
+> Expect that setting up a node and bonding it to the network will take about 30 minutes
 
 ## Set version and network you're going to set up
 
