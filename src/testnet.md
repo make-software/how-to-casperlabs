@@ -35,5 +35,6 @@ It is requested that all adhere to the Code of Conduct below. Adherence is taken
 4. Stage and participate in node software updates before they are supposed to take effect. This requires being attentive for and responsive to notifications
    in the Telegram channel.
 5. If you have to take your node offline, unbond your stake first.
+6. Follow the minimum [Reccomended Hardware Specifications](https://docs.casperlabs.io/en/latest/node-operator/hardware.html)
 
 [include disclaimer.md]
