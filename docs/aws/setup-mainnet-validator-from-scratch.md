@@ -50,7 +50,7 @@ sudo apt-get update
 ### Install pre-requisites
 
 ```
-sudo apt install dnsutils
+sudo apt install dnsutils -y
 ```
 
 The node uses ```dig``` to get external IP for autoconfig during the installation process
