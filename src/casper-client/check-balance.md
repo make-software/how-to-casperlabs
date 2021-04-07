@@ -8,7 +8,7 @@ To get the balance we need to perform the following three query commands:
 2. Get the main purse associated with your account:
 
     ```
-    casper-client query-state --node-address http://127.0.0.1:7777 --key <PUBLIC_KEY_HEX> --state-root-hash <STATE_ROOT_HASH> | jq -r
+    sudo -u casper casper-client query-state --node-address http://127.0.0.1:7777 --key <PUBLIC_KEY_HEX> --state-root-hash <STATE_ROOT_HASH> | jq -r
     ```
 
 3. Get the main purse balance:

@@ -1,4 +1,4 @@
-# FAQ
+# Frequently Asked Questions (FAQ)
 
 ## My node is running but is not visible by peers
 
@@ -19,7 +19,6 @@ Make sure you bid less than you have in your account. In case you bid all you ha
 ## I do not see my bid in the auction info
 
 Make sure that:
-- you sent your bid to a known validator (```--node-address``` argument)
 - you sent your bid to the correct chain (```--chain-name``` argument)
 
 If the request was correct, check the transaction status to ensure it went through.

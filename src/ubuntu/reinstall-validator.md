@@ -1,27 +1,8 @@
-# Update already installed delta testnet validator node on Ubuntu 20.04
-
-> **Note**  
-> Do not execute all the commands below as root. sudo is included where it is required. 
-
-## Update software
+## Reinstall software
 
 ### Stop the node if it is running and remove old packages and configuration
 
-```
-sudo systemctl stop casper-node
-sudo systemctl stop casper-node-launcher
-
-cd ~
-sudo apt remove -y casper-node 
-sudo apt remove -y casper-client 
-sudo apt remove -y casper-node-launcher
-
-# Clean up old genesis file location
-sudo rm /etc/casper/config.*
-sudo rm /etc/casper/accounts.csv 
-sudo rm /etc/casper/chainspec.toml 
-sudo rm /etc/casper/validation.md5
-```
+[include remove-casper-node.md]
 
 ### Download and install new node software
 
@@ -30,6 +11,22 @@ sudo rm /etc/casper/validation.md5
 [include run-node.md]
 
 ## Re-build smart contracts that are required to bond to the network 
+
+### Install additional prerequisites
+The following pre-requisite was not required during the Delta network but is highly advised during Test Net and Main Net
+
+```
+cd ~
+BRANCH="1.0.20" \
+    && git clone --branch ${BRANCH} https://github.com/WebAssembly/wabt.git "wabt-${BRANCH}" \
+    && cd "wabt-${BRANCH}" \
+    && git submodule update --init \
+    && cd - \
+    && cmake -S "wabt-${BRANCH}" -B "wabt-${BRANCH}/build" \
+    && cmake --build "wabt-${BRANCH}/build" --parallel 8 \
+    && sudo cmake --install "wabt-${BRANCH}/build" --prefix /usr --strip -v \
+    && rm -rf "wabt-${BRANCH}"
+```
 
 ### Build smart contracts
 
@@ -66,9 +63,3 @@ make clean
 ```
 make setup-rs && make build-client-contracts -j
 ```
-
-## Fund your account
-
-[include ../clarity/fund-account.md]
-
-[include bond.md]

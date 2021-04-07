@@ -18,10 +18,13 @@ rm -rf docs/*
 
 #files=($(find src -type f -name '*.md'))
 files=(
-    src/aws/setup-validator-from-scratch.md
-    src/ubuntu/setup-validator-from-scratch.md
-    src/ubuntu/update-validator.md
+    src/aws/setup-mainnet-validator-from-scratch.md
+    src/aws/setup-testnet-validator-from-scratch.md
+    src/ubuntu/setup-mainnet-validator-from-scratch.md
+    src/ubuntu/setup-testnet-validator-from-scratch.md
+    src/ubuntu/reinstall-testnet-validator.md
     src/faq.md
+    src/testnet.md
 )
 
 for file in ${files[*]}

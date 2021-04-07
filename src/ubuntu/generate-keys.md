@@ -5,7 +5,7 @@ cd /etc/casper/validator_keys
  
 And execute the following command to generate the keys:
 ```
-sudo casper-client keygen .
+sudo -u casper casper-client keygen .
 ```
 
 It will create three files in the ```/etc/casper/validator_keys``` directory:
