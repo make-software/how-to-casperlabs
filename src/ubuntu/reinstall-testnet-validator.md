@@ -13,3 +13,5 @@
 [include ../clarity/fund-testnet-account.md]
 
 [include bond.md]
+
+[include ../disclaimer.md]

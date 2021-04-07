@@ -25,3 +25,5 @@
 [include run-node.md]
 
 [include bond.md]
+
+[include ../disclaimer.md]

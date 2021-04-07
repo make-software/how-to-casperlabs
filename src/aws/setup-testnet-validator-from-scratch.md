@@ -20,3 +20,4 @@ Launch an appropriately powered instance using Ubuntu Server 20.04 LTS AMI and a
 Create elastic IP and assign it to the instance
 
 [include ../ubuntu/setup-testnet-validator-from-scratch.md]
+

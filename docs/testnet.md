@@ -35,5 +35,7 @@ It is requested that all adhere to the Code of Conduct below. Adherence is taken
 4. Stage and participate in node software updates before they are supposed to take effect. This requires being attentive for and responsive to notifications
    in the Telegram channel.
 5. If you have to take your node offline, unbond your stake first.
-   
 
+_The Casper Test Net is a program sponsored by the [DEVxDAO](https://devxdao.com). The rewards will be granted and calculated by the DEVxDAO.
+MAKE Technology LLC has no control over the program sponsorship or the incentivized reward program, and is hosting these guides and documents as a service
+to the DEVxDAO and the Casper community only._
