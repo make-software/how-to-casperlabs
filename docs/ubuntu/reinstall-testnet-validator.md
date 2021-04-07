@@ -53,8 +53,8 @@ sudo apt update
 #### Install the Casper node software
 
 ```
-sudo apt install casper-node-launcher
-sudo apt install casper-client
+sudo apt install casper-node-launcher -y
+sudo apt install casper-client -y
 ```
 
 ## Configure and Run the Node
@@ -62,7 +62,7 @@ sudo apt install casper-client
 ### Set up configuration
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION.conf $CASPER_NETWORK
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
 sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 

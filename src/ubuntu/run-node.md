@@ -3,7 +3,7 @@
 ### Set up configuration
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION.conf $CASPER_NETWORK
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
 sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 

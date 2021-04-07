@@ -11,6 +11,6 @@ sudo apt update
 #### Install the Casper node software
 
 ```
-sudo apt install casper-node-launcher
-sudo apt install casper-client
+sudo apt install casper-node-launcher -y
+sudo apt install casper-client -y
 ```

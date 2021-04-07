@@ -71,7 +71,7 @@ The node uses ```dig``` to get external IP for autoconfig during the installatio
 ### Install helpers
 
 ```
-sudo apt install jq
+sudo apt install jq -y
 ```
 
 We will use ```jq``` to process JSON responses from API later in the process
@@ -104,8 +104,8 @@ sudo apt update
 #### Install the Casper node software
 
 ```
-sudo apt install casper-node-launcher
-sudo apt install casper-client
+sudo apt install casper-node-launcher -y
+sudo apt install casper-client -y
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -118,13 +118,13 @@ sudo apt purge --auto-remove cmake
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
 sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
 sudo apt update
-sudo apt install cmake
+sudo apt install cmake -y
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-sudo apt install libssl-dev
-sudo apt install pkg-config
-sudo apt install build-essential
+sudo apt install libssl-dev -y
+sudo apt install pkg-config -y
+sudo apt install build-essential -y
 
 BRANCH="1.0.20" \
     && git clone --branch ${BRANCH} https://github.com/WebAssembly/wabt.git "wabt-${BRANCH}" \
@@ -202,7 +202,7 @@ To fund an account visit the [Faucet](https://clarity-testnet.make.services/#/fa
 ### Set up configuration
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION.conf $CASPER_NETWORK
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
 sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
