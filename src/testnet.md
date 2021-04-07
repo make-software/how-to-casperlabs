@@ -1,6 +1,6 @@
-#Casper Test Net
+# Casper Test Net
 
-##Introduction
+## Introduction
 Participants in the [DEVxDAO](https://devxdao.com) are standing up a Casper Test Net with the following objectives:
 * having a permissionless test environment that ecosystem participants can join and use in order to develop, test and tune their tools and 
 applications that eventually target the Casper Main Net, without the need for Main Net tokens.
@@ -11,7 +11,7 @@ applications that eventually target the Casper Main Net, without the need for Ma
 * testing and providing access to upcoming protocol and eco-system tool changes, in order to ensure compatibility with existing
 applications once said changes deploy to the Casper Main Net. 
   
-##Incentivized Participation
+## Incentivized Participation
 The DEVxDAO is inviting interested parties to participate in the Test Net and will offer incentive rewards to Test Net participants. The following
 will apply to Incentivized Participation:
 1. Rewards will be distributed on the Test Net for a period of time. This will be ratified soon after Test Net is up.
