@@ -78,18 +78,21 @@ sudo rm -rf /var/lib/casper/*
 
 ### Install Casper node
 
-> **Note**  
-> Different networks (e.g. Main Net, Test Net) may use different binaries, and the versions references below may be 
-> outdated, or not appropriate for the network you're trying to join. First verify the binary version you need
-> before installing!
-> 
-> The binaries below are for Casper Node v1.0.0, the main net genesis.
+#### Add Casper repository
+
+Execute the following in order to add the Casper repository to `apt` in Ubuntu. 
+```shell
+echo "deb https://repo.casperlabs.io/releases" bionic main | sudo tee -a /etc/apt/sources.list.d/casper.list
+curl -O https://repo.casperlabs.io/casper-repo-pubkey.asc
+sudo apt-key add casper-repo-pubkey.asc
+sudo apt update
+```
+
+#### Install the Casper node software
 
 ```
-cd ~
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node-launcher_0.3.2-0_amd64.deb
-curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.0.0-0_amd64.deb
-sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_1.0.0-0_amd64.deb
+sudo apt install casper-node-launcher
+sudo apt install casper-client
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -97,6 +100,7 @@ sudo apt install -y ./casper-node-launcher_0.3.2-0_amd64.deb ./casper-client_1.0
 ### Install pre-requisites for building smart contracts
 
 ```
+cd ~
 sudo apt purge --auto-remove cmake
 wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
 sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
@@ -108,6 +112,16 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt install libssl-dev
 sudo apt install pkg-config
 sudo apt install build-essential
+
+BRANCH="1.0.20" \
+    && git clone --branch ${BRANCH} https://github.com/WebAssembly/wabt.git "wabt-${BRANCH}" \
+    && cd "wabt-${BRANCH}" \
+    && git submodule update --init \
+    && cd - \
+    && cmake -S "wabt-${BRANCH}" -B "wabt-${BRANCH}/build" \
+    && cmake --build "wabt-${BRANCH}/build" --parallel 8 \
+    && sudo cmake --install "wabt-${BRANCH}/build" --prefix /usr --strip -v \
+    && rm -rf "wabt-${BRANCH}"
 ```
 
 ### Build smart contracts
@@ -175,15 +189,11 @@ To fund an account visit the [Faucet](https://clarity.make.services/#/faucet) pa
 ### Set up configuration
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION $CASPER_NETWORK
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION.conf $CASPER_NETWORK
 sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
 ### Get known validator IP
-
-> **Note**  
-> Getting a known validator IP and setting your trusted hash is only required if you are joining
-> a network after Genesis. If you are a Genesis validator no trusted hash is needed.
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
@@ -301,7 +311,7 @@ sudo -u casper casper-client put-deploy \
 ```
 
 Where:
-- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. Recommended bid in amount is 90% of your faucet balance.  This is 900,000 CSPR  or 9000000000000000 motes as an argument to the add_bid contract deploy. 
+- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. Recommended bid in amount is 90% of your faucet balance.  This is 90 CSPR  or 90000000000 motes as an argument to the add_bid contract deploy. 
 - ```delegation_rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
 
 Replace:
@@ -324,7 +334,7 @@ sudo -u casper casper-client put-deploy \
     --payment-amount 1000000000 \
     --gas-price=1 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
-    --session-arg=amount:"u512='9000000000000000'" \
+    --session-arg=amount:"u512='90000000000'" \
     --session-arg=delegation_rate:"u8='10'"
 ```
 

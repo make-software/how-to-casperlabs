@@ -1,5 +1,7 @@
 # Setup Test Net validator node from scratch on Ubuntu 20.04
 
+[include ../testnet/testnet-warning.md]
+
 [include sudo-notice.md]
 
 [include set-testnet-network-env-vars.md]

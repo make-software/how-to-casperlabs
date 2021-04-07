@@ -3,15 +3,11 @@
 ### Set up configuration
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION $CASPER_NETWORK
+sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_VERSION.conf $CASPER_NETWORK
 sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
 ```
 
 ### Get known validator IP
-
-> **Note**  
-> Getting a known validator IP and setting your trusted hash is only required if you are joining
-> a network after Genesis. If you are a Genesis validator no trusted hash is needed.
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 

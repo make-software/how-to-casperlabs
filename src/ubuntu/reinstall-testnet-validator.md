@@ -1,4 +1,6 @@
-# Reinstall software on Test Net validator node on Ubuntu 20.04
+# Reuse Delta Validator node as Test Net Validator node on Ubuntu 20.04
+
+[include ../testnet/testnet-warning.md]
 
 [include sudo-notice.md]
 

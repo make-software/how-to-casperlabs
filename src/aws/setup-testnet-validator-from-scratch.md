@@ -1,5 +1,7 @@
 # Setup Test Net validator node from scratch on Ubuntu 20.04 on AWS
 
+[include ../testnet/testnet-warning.md]
+
 ## Create security group 
 
 Create casperlabs-validator security group that exposes the following ports to public:
