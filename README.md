@@ -1,6 +1,6 @@
 # How to Casper Network
 
-This documentation is aimed to help prospective node-operators to set up and configure their Casper Network validator node.
+This documentation is aimed to help prospective node-operators set up and configure their Casper Network validator node.
 
 ## Test Net
   - [Test Net Code of Conduct and Incentive Requirements](/docs/testnet.md)
