@@ -1,4 +1,4 @@
-# FAQ
+# Frequently Asked Questions (FAQ)
 
 ## My node is running but is not visible by peers
 
