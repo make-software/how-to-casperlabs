@@ -40,6 +40,15 @@ Create elastic IP and assign it to the instance
 > 
 > Expect that setting up a node and bonding it to the network will take about 30 minutes
 
+## Open Firewall Ports
+
+In your firewall set-up, make sure your expose the following ports to public and that they're routed to your node:
+
+- ```7777``` - rpc port
+- ```8888``` - status port
+- ```9999``` - event stream port
+- ```35000``` - gossip port
+
 ## Set version and network you're going to set up
 
 Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`

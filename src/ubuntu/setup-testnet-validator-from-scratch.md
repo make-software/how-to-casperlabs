@@ -4,6 +4,8 @@
 
 [include sudo-notice.md]
 
+[include open-ports.md]
+
 [include set-testnet-network-env-vars.md]
 
 [include setup-validator-from-scratch.md]
