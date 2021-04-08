@@ -286,24 +286,7 @@ Once you ensure that your node is running correctly and is visible by other proc
 
 Check your balance to ensure you have funds to bond:
 
-To get the balance we need to perform the following three query commands:
-
-1. Get the state root hash (has to be performed for each balance check because the hash changes with time): 
-
-    ```
-    casper-client get-state-root-hash --node-address http://127.0.0.1:7777 | jq -r
-    ```
-2. Get the main purse associated with your account:
-
-    ```
-    sudo -u casper casper-client query-state --node-address http://127.0.0.1:7777 --key <PUBLIC_KEY_HEX> --state-root-hash <STATE_ROOT_HASH> | jq -r
-    ```
-
-3. Get the main purse balance:
-
-    ```
-    casper-client get-balance --node-address http://127.0.0.1:7777 --purse-uref <PURSE_UREF> --state-root-hash <STATE_ROOT_HASH> | jq -r
-    ```
+[comment]: <> ([include ../casper-client/check-balance.md])
 
 If you followed the installation steps from this document you can run the following script to check the balance:
 
@@ -316,32 +299,10 @@ casper-client get-balance --node-address http://127.0.0.1:7777 --purse-uref "$PU
 
 ### Make bonding request
 
-To bond to the network as a validator you need to submit your bid using ```casper-client```:
+[comment]: <> ([include ../casper-client/bond.md])
 
-```
-sudo -u casper casper-client put-deploy \
-        --chain-name "<CHAIN_NAME>" \
-        --node-address "http://127.0.0.1:7777/" \
-        --secret-key "/etc/casper/validator_keys/secret_key.pem" \
-        --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
-        --payment-amount 1000000000 \
-        --gas-price=1 \
-        --session-arg=public_key:"public_key='<PUBLIC_KEY_HEX>'" \
-        --session-arg=amount:"u512='900000000000'" \
-        --session-arg=delegation_rate:"u8='10'"
-```
-
-Where:
-- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. Recommended bid in amount is 90% of your faucet balance.  This is ```900 CSPR```  or ```900000000000 motes``` as an argument to the ```add_bid``` contract deploy. 
-- ```delegation_rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
-
-Replace:
-- ```<CHAIN_NAME>``` with the chain name you are joining
-- ```<PUBLIC_KEY_HEX>``` with the hex representation of you public key 
-
-Remember the ```deploy_hash``` returned in the response to query its status later.
-
-If you followed the installation steps from this document you can run the following script to bond. It substitutes the public key hex value for you and sends recommended argument values:
+If you followed the installation steps from this document you can run the following script to bond. 
+It substitutes the public key hex value for you and sends recommended argument values:
 
 ```
 PUBLIC_KEY_HEX=$(sudo -u casper cat /etc/casper/validator_keys/public_key_hex)
@@ -358,6 +319,12 @@ sudo -u casper casper-client put-deploy \
     --session-arg=amount:"u512='900000000000'" \
     --session-arg=delegation_rate:"u8='10'"
 ```
+
+#### Argument Explanation
+- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. Recommended bid in amount is 90% of your faucet balance.  This is ```900 CSPR```  or ```900000000000 motes``` as an argument to the ```add_bid``` contract deploy.
+- ```delegation_rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
+  
+Remember the ```deploy_hash``` returned in the response to query its status later.
 
 ### Check that you bonding request worked
 

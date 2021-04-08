@@ -6,13 +6,13 @@ Once you ensure that your node is running correctly and is visible by other proc
 
 Check your balance to ensure you have funds to bond:
 
-[include ../casper-client/check-balance.md]
+[comment]: <> ([include ../casper-client/check-balance.md])
 
 [include casper-client/check-balance.md]
 
 ### Make bonding request
 
-[include ../casper-client/bond.md]
+[comment]: <> ([include ../casper-client/bond.md])
 
 [include casper-client/bond.md]
 
