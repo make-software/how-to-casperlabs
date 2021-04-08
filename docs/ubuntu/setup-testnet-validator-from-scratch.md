@@ -197,6 +197,11 @@ After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will con
 
 ### Set trusted hash
 
+
+> ### Note
+> Setting the `trusted_hash` is only required if you join the network after Genesis has taken place. If you are joining 
+> prior to Genesis, you may skip this step and continue at "Start the node".
+
 Get the trusted hash from the network:
 
 ```
