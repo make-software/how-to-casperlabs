@@ -20,6 +20,7 @@ certain performance criteria (see below), and subject to certain limits and fina
 * Rewards are awarded to the top-ranked `n` of Testnet participants in a given week:
     * `n` is subject to a future vote of the DEVxDAO
     * the ranking each week is calculated as explained below 
+    * all participants tied for the last reward-eligible position will be awarded
 * Rewards are accrued and paid at a later date, subject to Casper token lock-up periods and DEVxDAO governance and grant specifics
 * The total reward amount available to the program is subject to a DEVxDAO vote, per its governance rules
 
