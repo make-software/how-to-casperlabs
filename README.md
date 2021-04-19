@@ -5,6 +5,7 @@ This documentation is aimed to help prospective node-operators set up and config
 ## Testnet Information
   - [Test Net Code of Conduct and Incentive Requirements](/docs/testnet.md)
   - [Testnet Rewards](/docs/testnet-rewards.md)
+  - [IMPORTANT - Testnet Upgrade to casper-node v1.1.0 before April 22](/docs/testnet/upgrade-1_1_0.md)
 
 ## Testnet Guides
   - [Set up Test Net validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
