@@ -25,6 +25,7 @@ files=(
     src/ubuntu/reinstall-testnet-validator.md
     src/faq.md
     src/testnet.md
+    src/testnet-rewards.md
 )
 
 for file in ${files[*]}
