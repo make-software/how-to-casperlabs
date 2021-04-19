@@ -1,5 +1,3 @@
-# DRAFT - NOT FINAL
-
 # DEVxDAO Casper Testnet Rewards
 
 ## Introduction
