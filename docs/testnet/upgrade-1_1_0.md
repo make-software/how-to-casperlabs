@@ -1,7 +1,7 @@
-# Upgrade to `casper-node` v1.1.0
+# Upgrade to casper-node v1.1.0
 
 ## Introduction and Timing
-We are requesting all Casper Testnet participants stage the upgrade of their nodes to a new version of `casper_node` 
+We are requesting that all Casper Testnet participants stage the upgrade of their nodes to a new version of `casper_node` 
 immediately, using the instructions below. "Staging an upgrade" is a process in which you tell your node to download
 the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point.
 
