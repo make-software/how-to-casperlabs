@@ -22,7 +22,8 @@ certain performance criteria (see below), and subject to certain limits and fina
     * all participants tied for the last reward-eligible position will be awarded
 * Rewards are accrued and paid at a later date, subject to Casper token lock-up periods and DEVxDAO governance and grant specifics
 * The total reward amount available to the program is subject to a DEVxDAO vote, per its governance rules
-* Reward participation is contingent upon completing a KYC/AML process, details for which will be announced at a later date
+* Reward participation is contingent upon completing a KYC/AML process, details for which will be announced at a later date.
+* One KYC'd person can only be tied to one node, for reward purposes.
 
 ### Weekly Reward Calculation
 
