@@ -24,7 +24,11 @@
 
 [include ../clarity/fund-testnet-account.md]
 
-[include run-node.md]
+[include configure-node.md]
+
+[include stage-upgrade.md]
+
+[include start-node.md]
 
 [include monitor-node-status.md]
 

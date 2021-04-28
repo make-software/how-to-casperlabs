@@ -35,11 +35,3 @@ Get the trusted hash from the network:
 TRUSTED_HASH=$(curl -s $KNOWN_VALIDATOR_IP:8888/status | jq -r .last_added_block_info.hash | tr -d '\n')
 if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/$CASPER_VERSION/config.toml; fi
 ```
-
-### Start the node
-
-```
-sudo logrotate -f /etc/logrotate.d/casper-node
-sudo systemctl start casper-node-launcher; sleep 2
-systemctl status casper-node-launcher
-```

@@ -20,7 +20,9 @@
 
 [include ../clarity/fund-mainnet-account.md]
 
-[include run-node.md]
+[include configure-node.md]
+
+[include start-node.md]
 
 [include monitor-node-status.md]
 
