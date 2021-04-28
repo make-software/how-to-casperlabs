@@ -10,6 +10,8 @@
 
 [include run-node.md]
 
+[include monitor-node-status.md]
+
 ## Re-build smart contracts that are required to bond to the network 
 
 ### Install additional prerequisites

@@ -26,6 +26,8 @@
 
 [include run-node.md]
 
+[include monitor-node-status.md]
+
 [include bond.md]
 
 [include ../disclaimer.md]
