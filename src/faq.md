@@ -23,3 +23,9 @@ Make sure that:
 
 If the request was correct, check the transaction status to ensure it went through.
 [include casper-client/check-transaction-status.md]
+
+## How do I estimate execution cost?
+
+The ```chainspec.toml``` file contains costs for every function call or operation, as well as memory and space usage. However, it is rather complicated to estimate the cost that way. 
+
+Right now, estimation would be done by exercising contracts against the Testnet. Casperlabs team intends to do this exercise for all the important contracts they provide. The results will end up as an addendum to online documentation.

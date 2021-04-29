@@ -29,3 +29,9 @@ casper-client get-deploy --node-address http://<KNOWN_VALIDATOR_IP>:7777 <DEPLOY
 ```
 
 Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to check.
+
+## How do I estimate execution cost?
+
+The ```chainspec.toml``` file contains costs for every function call or operation, as well as memory and space usage. However, it is rather complicated to estimate the cost that way. 
+
+Right now, estimation would be done by exercising contracts against the Testnet. Casperlabs team intends to do this exercise for all the important contracts they provide. The results will end up as an addendum to online documentation.
