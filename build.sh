@@ -27,6 +27,7 @@ files=(
     src/testnet.md
     src/testnet-rewards.md
     src/testnet/upgrade-1_1_0.md
+    src/testnet/upgrade-1_1_2.md
 )
 
 for file in ${files[*]}
