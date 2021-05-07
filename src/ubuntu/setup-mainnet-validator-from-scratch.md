@@ -22,6 +22,8 @@
 
 [include configure-node.md]
 
+[include stage-upgrade-mainnet.md]
+
 [include start-node.md]
 
 [include monitor-node-status.md]
