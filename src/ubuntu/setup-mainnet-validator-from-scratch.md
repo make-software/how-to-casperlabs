@@ -6,7 +6,7 @@
 
 [include setup-validator-from-scratch.md]
 
-[include checkout-release-branch.md]
+[include checkout-release-branch-mainnet.md]
 
 [include build-the-contracts.md]
 

@@ -54,7 +54,7 @@ cd ~/casper-node
 git fetch
 ```
 
-[include checkout-release-branch.md]
+[include checkout-release-branch-testnet.md]
 
 #### Remove previous builds
 
