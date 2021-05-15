@@ -6,6 +6,10 @@
 
 [include setup-validator-from-scratch.md]
 
+[include checkout-release-branch-mainnet.md]
+
+[include build-the-contracts.md]
+
 ## Generate keys and fund your account 
 
 ### Generate node keys

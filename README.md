@@ -7,6 +7,7 @@ This documentation is aimed to help prospective node-operators set up and config
   - [Testnet Rewards](/docs/testnet-rewards.md)
   - [IMPORTANT - Testnet Upgrade to casper-node v1.1.0 before April 22](/docs/testnet/upgrade-1_1_0.md)
   - [IMPORTANT - Testnet Upgrade to casper-node v1.1.2 before May 11](/docs/testnet/upgrade-1_1_2.md)
+  - [IMPORTANT - Testnet Upgrade to casper-node v1.2.0 before May 19](/docs/testnet/upgrade-1_2_0.md)
 
 ## Testnet Guides
   - [Set up Test Net validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)

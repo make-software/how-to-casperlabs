@@ -73,12 +73,3 @@ cd ~
 git clone git://github.com/CasperLabs/casper-node.git
 cd casper-node/
 ```
-
-[include checkout-release-branch.md]
-
-#### Build the contracts
-
-```
-make setup-rs
-make build-client-contracts -j
-```
