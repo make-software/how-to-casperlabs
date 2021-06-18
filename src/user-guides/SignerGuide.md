@@ -1,5 +1,7 @@
 # Signer Guide
 
+![Casper Signer Logo](../../assets/CasperNetwork/casper-signer-logo.jpg)
+
 ## New User (No Accounts)
 
 ### Download Signer
