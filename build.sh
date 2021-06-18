@@ -32,6 +32,7 @@ files=(
     src/user-guides/SignerGuide.md
     src/user-guides/Connect-a-Wallet.md
     src/user-guides/Delegating-CSPR-Stake.md
+    src/user-guides/Generate-Keys.md
 )
 
 for file in ${files[*]}

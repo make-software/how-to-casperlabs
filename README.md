@@ -6,6 +6,7 @@ This documentation aims to help with onboarding the new citizens of the Casper n
   - [Signer Guide](/docs/user-guides/SignerGuide.md)
   - [Connect a Wallet](/docs/user-guides/Connect-a-Wallet.md)
   - [Delegating CSPR Stake](/docs/user-guides/Delegating-CSPR-Stake.md)
+  - [Generate Keys](/docs/user-guides/Generate-Keys.md)
 
 ## For Node Operators
 
