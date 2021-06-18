@@ -6,11 +6,11 @@
 
 ### Download Signer
 
-Using Chrome or a Chromium-based browser like Brave, visit the Chrome Web Store, then download and install the [Casper Labs Signer extension](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce).
+Using Chrome or a Chromium-based browser like Brave, visit the Chrome Web Store, then download and install the [CasperLabs Signer extension](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce).
 
 ### Set Up Signer
 
-Signer let's you sign deploys on the Casper network. To get started, you'll need to create a Vault.
+Signer let's you sign deploys on the Casper Network. To get started, you'll need to create a Vault.
 
 1. Create a password for your new vault. Vaults are used to store your Signer accounts. Confirm the Vault password, and then click `Create Vault` . *Make sure to write down and store your password in a secure location.*
 2. Next, create your first account by clicking `Create Account`.

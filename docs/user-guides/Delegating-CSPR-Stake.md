@@ -2,25 +2,17 @@
 
 ## What You'll Need
 
-A compatible wallet with a CSPR balance: either [CasperLabs's Signer](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce) or [Ledger](https://www.ledger.com/). More wallets are planned for the future.
+A compatible wallet with a CSPR balance: [CasperLabs's Signer](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce). More wallets, including Ledger, are planned for the future.
 
 ## The Basics
 
 ### Connect a Wallet
 
-You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu. Then choose your Sign In option, either Signer or Ledger:
-
-#### ...Using Signer
+You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu. Then follow these steps to sign in using the Signer app:
 
 1. From the Sign In screen click `Sign In` under the Casper Signer option
 2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect` . Then click `Connect` again to approve the connection.
 3. Select an account to connect to.
-
-#### ...Using Ledger
-
-1. From the Sign In screen click `Connect` under the Ledger option.
-2. Approve the connection when prompted
-3. Select the Account that will be used to delegate and click `Add Account` 
 
 ### Access Delegate Stake Wizard
 
