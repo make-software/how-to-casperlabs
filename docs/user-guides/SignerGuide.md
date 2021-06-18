@@ -49,4 +49,4 @@ Immediately bars access to the vault. The user is able to unlock the vault at an
 
 ## What's Next?
 
-Once you have a Signer account you can [connect it to CSPR.Live](Connect-A-Wallet.md) to access a range of capabilities, like viewing your account balance, and [delegating CSPR stake](Delegating-CSPR-Stake.md) for rewards.
+Once you have a Signer account you can [connect it to CSPR.Live](Connect-a-Wallet.md) to access a range of capabilities, like viewing your account balance, and [delegating CSPR stake](Delegating-CSPR-Stake.md) for rewards.
