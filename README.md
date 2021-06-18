@@ -5,6 +5,7 @@
 This documentation aims to help with onboarding the new citizens of the Casper network by providing guides on basic setup and operations.
   - [Signer Guide](/docs/user-guides/SignerGuide.md)
   - [Connect a Wallet](/docs/user-guides/Connect-a-Wallet.md)
+  - [Delegating CSPR Stake](/docs/user-guides/Delegating-CSPR-Stake.md)
 
 ## For Node Operators
 
