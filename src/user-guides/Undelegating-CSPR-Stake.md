@@ -8,7 +8,7 @@ A compatible wallet with a balance of at least 2.5 CSPR: [CasperLabs's Signer](h
 
 ### Connect a Wallet
 
-You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](http://cspr.live). Then follow these steps to sign in using the Signer app:
+You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](https://cspr.live). Then follow these steps to sign in using the Signer app:
 
 1. From the Sign In screen, click `Sign In` under the Casper Signer option
 2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect`. Then click `Connect` again to approve the connection.
@@ -39,7 +39,7 @@ Once you've signed in, you can access the Undelegate Stake wizard in a few ways.
 ### Step 3 - Sign
 
 1. Click `Sign with Casper Signer`.
-2. Signer app window opens. Make sure that the Deploy hash in the Signer window matches the Deploy hash in [CSPR.Live](http://cspr.Live) before continuing.
+2. Signer app window opens. Make sure that the Deploy hash in the Signer window matches the Deploy hash in [CSPR.Live](https://cspr.Live) before continuing.
 3. Click `Sign` in the Signer window to sign and finalize the transaction.
 
 ### Step 4 - Done
