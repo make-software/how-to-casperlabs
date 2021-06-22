@@ -8,15 +8,15 @@ A compatible wallet with a CSPR balance: [CasperLabs's Signer](https://chrome.go
 
 ### Connect a Wallet
 
-You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu. Then follow these steps to sign in using the Signer app:
+You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](http://cspr.live). Then follow these steps to sign in using the Signer app:
 
-1. From the Sign In screen click `Sign In` under the Casper Signer option
-2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect` . Then click `Connect` again to approve the connection.
+1. From the Sign In screen, click `Sign In` under the Casper Signer option
+2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect`. Then click `Connect` again to approve the connection.
 3. Select an account to connect to.
 
 ### Access Delegate Stake Wizard
 
-Once you've signed in, you can access the Delegate Stake wizard in a few ways. 
+Once you've signed in to [CSPR.Live](http://cspr.live), you can access the Delegate Stake wizard in a few ways.
 
 * **OPTION 1:** Click `Wallet` from the top navigation menu, then click `Delegate`
 
@@ -28,13 +28,13 @@ Once you've signed in, you can access the Delegate Stake wizard in a few ways.
 
 1. Start by choosing which Validator you would like to stake with. If a Validator is not already selected, you can search for one using the Validator search box, or, if you have a Validator in mind, paste their Public Key. 
 2. Next, enter the Amount of CSPR you would like to delegate.
-3. Click `Next`
+3. Click `Next`.
 
 ### Step 2 - Confirm Details
 
 1. Review the details of the transaction. 
 2. Next, enter an Amount. 
-3. If everything appears correct, click `Next` . If there is something you wish to change, you can return to the previous step by clicking `Back to Step 1`.
+3. If everything appears correct, click `Next`. If there is something you wish to change, you can return to the previous step by clicking `Back to Step 1`.
 
 ### Step 3 - Sign
 
