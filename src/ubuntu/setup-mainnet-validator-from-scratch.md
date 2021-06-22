@@ -16,10 +16,6 @@
 
 [include generate-keys.md]
 
-### Create account
-
-[include ../clarity/create-mainnet-account.md]
-
 ### Fund account
 
 [include ../clarity/fund-mainnet-account.md]
