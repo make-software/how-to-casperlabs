@@ -8,7 +8,7 @@ A compatible wallet with a CSPR balance: [CasperLabs's Signer](https://chrome.go
 
 ### Connect a Wallet
 
-You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](http://cspr.live). Then follow these steps to sign in using the Signer app:
+You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](https://cspr.live). Then follow these steps to sign in using the Signer app:
 
 1. From the Sign In screen, click `Sign In` under the Casper Signer option
 2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect`. Then click `Connect` again to approve the connection.
@@ -16,7 +16,7 @@ You can access the wallet Sign In screen by clicking `Sign In` from the top navi
 
 ### Access Delegate Stake Wizard
 
-Once you've signed in to [CSPR.Live](http://cspr.live), you can access the Delegate Stake wizard in a few ways.
+Once you've signed in to [CSPR.Live](https://cspr.live), you can access the Delegate Stake wizard in a few ways.
 
 * **OPTION 1:** Click `Wallet` from the top navigation menu, then click `Delegate`
 
@@ -39,7 +39,7 @@ Once you've signed in to [CSPR.Live](http://cspr.live), you can access the Deleg
 ### Step 3 - Sign
 
 1. Click `Sign with Casper Signer`
-2. Signer app window opens. Make sure that the Deploy hash in the Signer window matches the Deploy hash in [CSPR.Live](http://cspr.Live) before continuing.
+2. Signer app window opens. Make sure that the Deploy hash in the Signer window matches the Deploy hash in [CSPR.Live](https://cspr.Live) before continuing.
 3. Click `Sign` in the Signer window to sign and finalize the transaction.
 
 ### Step 4 - Done

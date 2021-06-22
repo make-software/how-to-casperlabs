@@ -2,7 +2,7 @@
 
 ## Create Account
 
-Navigate to the Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](http://cspr.live). Then click `Create Account`.
+Navigate to the Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](https://cspr.live). Then click `Create Account`.
 
 ![CSPR Live Create Account](../../assets/Generate-Keys/00-CSPR-Live-Create-Account.png)
 
@@ -16,4 +16,4 @@ Once your keys are downloaded, click `Next`.
 
 ## View Account Details
 
-View your account details at any time by clicking your Public Key in the top navigation menu of [CSPR.Live](http://cspr.live), and clicking `View Account` from the expanded menu.
+View your account details at any time by clicking your Public Key in the top navigation menu of [CSPR.Live](https://cspr.live), and clicking `View Account` from the expanded menu.

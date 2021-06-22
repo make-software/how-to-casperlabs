@@ -37,7 +37,7 @@ See all accounts within the vault. From here you can edit the account, delete th
 
 ### Connected Sites
 
-View websites and DApps that your accounts have connected with (e.g. [CSPR.Live](http://cspr.live))
+View websites and DApps that your accounts have connected with (e.g. [CSPR.Live](https://cspr.live))
 
 ### Download Active Key
 
