@@ -31,7 +31,9 @@ files=(
     src/testnet/upgrade-1_2_0.md
     src/user-guides/SignerGuide.md
     src/user-guides/Connect-a-Wallet.md
+    src/user-guides/Transfer-CSPR.md
     src/user-guides/Delegating-CSPR-Stake.md
+    src/user-guides/Undelegating-CSPR-Stake.md
     src/user-guides/Generate-Keys.md
 )
 

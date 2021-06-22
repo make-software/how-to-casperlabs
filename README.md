@@ -5,7 +5,9 @@
 This documentation aims to help with onboarding the new end users of the Casper Network by providing guides on basic setup and operations.
   - <img src="assets/CasperNetwork/casper-signer-logo.jpg" alt="Casper Signer" width="20" style="vertical-align:middle"/> [Signer Guide](/docs/user-guides/SignerGuide.md)
   - 👛 [Connect a Wallet](/docs/user-guides/Connect-a-Wallet.md)
+  - 💸 [Transfer CSPR](/docs/user-guides/Transfer-CSPR.md)
   - 🥩 [Delegating CSPR Stake](/docs/user-guides/Delegating-CSPR-Stake.md)
+  - 🥙 [Undelegating CSPR Stake](/docs/user-guides/Undelegating-CSPR-Stake.md)
   - 🔑 [Generate Keys](/docs/user-guides/Generate-Keys.md)
 
 ## For Node Operators
