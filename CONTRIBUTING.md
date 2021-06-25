@@ -22,13 +22,13 @@ Thanks for wanting to contribute to Casper Network - Information and How-To Guid
 
 Workflow for contributions:
 * [Fork](https://github.com/make-software/how-to-casperlabs/fork) the main repo
-* Do your changes
+* Make your changes
 * Create a new pull request
 
 Notes:
 * Typo corrections and new articles are welcome contributions.
 * The documentation is served on GitHub pages with Jekyll.
-* Do your changes in the `src` directory, then run the `build.sh` script to publish them to the docs directory.
+* Make your changes in the `src` directory, then run the `build.sh` script to publish them to the docs directory.
 * Use markdown syntax for documentation.
 * Try to use includes as much as possible to avoid content duplication.
 * Respect the [license](https://github.com/make-software/how-to-casperlabs/blob/master/LICENSE) terms of the repo
