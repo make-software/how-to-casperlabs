@@ -52,5 +52,7 @@ Yes. You may follow these steps:
 * Wait for the new node to catch up with the network.
 * Make sure its status is active on cspr.live
 * If you find that you're no longer in the list of Validators but expected to be, you may have been `evicted` because your validator node was not participating in consensus for an era. If you want to rejoin, you need to "reactivate your bid" using the following commands:
+
   `CHAIN_NAME=$(curl -s http://127.0.0.1:8888/status | jq -r '.chainspec_name')`
+
   `sudo -u casper casper-client put-deploy --secret-key /etc/casper/validator_keys/secret_key.pem --chain-name "$CHAIN_NAME" --session-path ~/casper-node/target/wasm32-unknown-unknown/release/activate_bid.wasm --payment-amount 300000000 --session-arg "validator_public_key:public_key='$(cat /etc/casper/validator_keys/public_key_hex)'"`
