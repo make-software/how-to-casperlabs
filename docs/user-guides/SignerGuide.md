@@ -2,6 +2,10 @@
 
 ![Casper Signer Logo](../../assets/CasperNetwork/casper-signer-logo.jpg)
 
+CasperLabs Signer acts as your CSPR wallet, keeping your accounts and letting you sign deploys on the Casper Network to perform actions like staking, unstaking or sending your tokens to another person or an exchange account.
+
+You can create, store and use one or more CSPR accounts on your Signer wallet. All accounts are stored safely in a vault, which is protected by a password you will set when you create it.
+
 ## New User (No Accounts)
 
 ### Download Signer
@@ -13,6 +17,9 @@ Using Chrome or a Chromium-based browser like Brave, visit the Chrome Web Store,
 Signer let's you sign deploys on the Casper Network. To get started, you'll need to create a Vault.
 
 1. Create a password for your new vault. Vaults are used to store your Signer accounts. Confirm the Vault password, and then click `Create Vault` . *Make sure to write down and store your password in a secure location.*
+
+    ![Casper Signer First Login](../../assets/SignerGuide/05-Casper-Signer-New-Vault.png)
+
 2. Next, create your first account by clicking `Create Account`.
 
     ![Casper Signer First Login](../../assets/SignerGuide/00-Casper-Signer-First-Login.png)
