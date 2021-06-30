@@ -28,7 +28,7 @@ Signer let's you sign deploys on the Casper Network. To get started, you'll need
 
     ![Casper Signer Create Account](../../assets/SignerGuide/01-Casper-Signer-Create-Account.png)
 
-4. Select an Algorithm using the dropdown. Then click `Create` to create the account.
+4. Select an Algorithm using the dropdown. (Select `ED25519` if you are not sure. See the FAQ for details.) Then click `Create` to create the account.
 
 ## Returning User (Has Accounts)
 
@@ -45,6 +45,8 @@ See all accounts within the vault. From here you can edit the account, delete th
 ### Connected Sites
 
 View websites and DApps that your accounts have connected with (e.g. [CSPR.Live](https://cspr.live))
+
+![Casper Signer Connected Sites](../../assets/SignerGuide/06-Casper-Signer-Connected-Sites.png)
 
 ### Download Active Key
 
