@@ -10,8 +10,17 @@ A compatible wallet with a balance of at least 2.5 CSPR: [CasperLabs's Signer](h
 
 You can access the wallet Sign In screen by clicking `Sign In` from the top navigation menu of [CSPR.Live](https://cspr.live). Then follow these steps to sign in using the Signer app:
 
-1. From the Sign In screen, click `Sign In` under the Casper Signer option
-2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect`. Then click `Connect` again to approve the connection.
+1. From the Sign In screen, click `Sign In` under the Casper Signer option.
+
+    ![CSPR Live - Casper Signer Option](../../assets/Connect-a-Wallet/00-CSPR-Live-Casper-Signer-Option.png)
+
+2. The Signer app window will open automatically. From the Signer window, when prompted to connect Signer to site, click `Connect`.
+
+    ![Casper Signer - Connect to Site](../../assets/Connect-a-Wallet/01-Casper-Signer-Connect-to-Site-01.png)
+
+3. Then click `Connect` again to approve the connection.
+
+    ![Casper Signer - Approve Connection](../../assets/Connect-a-Wallet/02-Casper-Signer-Approve-Connection.png)
 
 ### Access Undelegate Stake Wizard
 
@@ -21,7 +30,7 @@ Once you've signed in, you can access the Undelegate Stake wizard in a few ways.
 
 * **OPTION 2:** Go to your account details by clicking your Public Key in the top navigation menu, or by clicking `View Account` from the expanded menu. Then click on the `Delegations` tab, and click on the `Undelegate` button next to entry you would like to undelegate.
 
-* **OPTION 3:** Click `Validator` from the top navigation menu. From the Validator table, click on any Validator you have staked with to access their details. Click the `Undelegate Stake` button.
+* **OPTION 3:** Click `Validators` from the top navigation menu. From the Validators table, click on any Validator you have staked with to access their details. Click the `Undelegate Stake` button.
 
 ## Undelegate Stake
 

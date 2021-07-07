@@ -32,7 +32,7 @@ Once you've signed in to [CSPR.Live](https://cspr.live), you can access the Dele
 
 * **OPTION 1:** Click `Wallet` from the top navigation menu, then click `Delegate`
 
-* **OPTION 2:** Click `Validator` from the top navigation menu. From the Validator table, click on any Validator to access their details. Click the `Delegate` button.
+* **OPTION 2:** Click `Validators` from the top navigation menu. From the Validators table, click on any Validator to access their details. Click the `Delegate` button.
 
 ## Delegate Stake
 
