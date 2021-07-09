@@ -23,6 +23,7 @@ files=(
     src/ubuntu/setup-mainnet-validator-from-scratch.md
     src/ubuntu/setup-testnet-validator-from-scratch.md
     src/ubuntu/reinstall-testnet-validator.md
+    src/faq-user.md
     src/faq-validator.md
     src/testnet.md
     src/testnet-rewards.md
