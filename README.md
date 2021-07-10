@@ -10,6 +10,8 @@ This documentation aims to help with onboarding the new end users of the Casper 
   - 🥙 [Undelegating CSPR Stake](/docs/user-guides/Undelegating-CSPR-Stake.md)
   - 🔑 [Generate Keys](/docs/user-guides/Generate-Keys.md)
 
+  - ❓ [User FAQ](/docs/faq-user.md)
+
 ## For Node Operators
 
 This documentation is aimed to help prospective node-operators set up and configure their Casper Network validator nodes.
@@ -33,7 +35,7 @@ This documentation is aimed to help prospective node-operators set up and config
   - [IMPORTANT - Testnet Upgrade to casper-node v1.2.1 before July 13](/docs/testnet/upgrade-1_2_1.md)
 
 ### Miscellaneous
-- [FAQ](/docs/faq.md)
+- [Validator FAQ](/docs/faq-validator.md)
 
 ### Have questions?
 Go to the [#validators-general](https://discord.gg/uGv72geF) channel on Discord
