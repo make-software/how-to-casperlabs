@@ -22,11 +22,11 @@
 
 ### Create account
 
-[include ../clarity/create-testnet-account.md]
+[include ../testnet/create-testnet-account.md]
 
 ### Fund account
 
-[include ../clarity/fund-testnet-account.md]
+[include ../testnet/fund-testnet-account.md]
 
 [include configure-node.md]
 
