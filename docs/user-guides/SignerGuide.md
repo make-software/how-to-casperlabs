@@ -30,6 +30,32 @@ Signer let's you sign deploys on the Casper Network. To get started, you'll need
 
 4. Select an Algorithm using the dropdown. (Select `ED25519` if you are not sure. See the FAQ for details.) Then click `Create` to create the account.
 
+## New User (Has Secret Keys)
+
+If you already have your secret keys and would like to set up and use your wallet with your existing accounts, follow the steps below. These steps also apply for the users migrating from the now-outdated Clarity to [CSPR.Live](https://cspr.live).
+
+### Download Signer
+
+Using Chrome or a Chromium-based browser like Brave, visit the Chrome Web Store, then download and install the [CasperLabs Signer extension](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce).
+
+### Set Up Signer
+
+Signer let's you sign deploys on the Casper Network. To get started, you'll need to create a Vault.
+
+1. Create a password for your new vault. Vaults are used to store your Signer accounts. Confirm the Vault password, and then click `Create Vault` . *Make sure to write down and store your password in a secure location.*
+
+    ![Casper Signer First Login](../../assets/SignerGuide/05-Casper-Signer-New-Vault.png)
+
+2. Next, import your existing account by clicking `IMPORT ACCOUNT`.
+
+    ![Casper Signer First Login](../../assets/SignerGuide/00-Casper-Signer-First-Login.png)
+
+3. Click on the `UPLOAD` button and select your secret key file (with a `.pem` extension), and give a name to your account. Then click on the `IMPORT` button to complete the import operation.
+
+    ![Casper Signer Import Account](../../assets/SignerGuide/07-Casper-Signer-Import-Account-Filled.png)
+
+4. Repeat the same steps for all accounts you would like to import to your new wallet.
+
 ## Returning User (Has Accounts)
 
 Open the Signer extension and log into your Vault. Click on the hamburger menu icon to select from a range of capabilities. Notice that ✔️ indicates the active account:
