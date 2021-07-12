@@ -1,1 +1,1 @@
-Go to [Clarity](https://clarity-testnet.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select you public key file ```public_key.pem```. Do NOT, EVER, upload your private key. Give it a name and hit "Save".  
+Install the Signer app, and import your `secret_key.pem` file following the steps described under the `New User (Has Secret Keys)` section of the [Signer Guide](https://docs.cspr.community/docs/user-guides/SignerGuide.html).
