@@ -18,7 +18,7 @@
 
 ### Fund account
 
-[include ../clarity/fund-mainnet-account.md]
+[include ../fund-mainnet-account.md]
 
 [include configure-node.md]
 

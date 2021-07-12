@@ -1,0 +1,1 @@
+Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://docs.cspr.community/docs/user-guides/Connect-a-Wallet.html) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.

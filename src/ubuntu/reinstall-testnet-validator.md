@@ -10,7 +10,7 @@
 
 ## Fund your account
 
-[include ../clarity/fund-testnet-account.md]
+[include ../testnet/fund-testnet-account.md]
 
 [include bond.md]
 

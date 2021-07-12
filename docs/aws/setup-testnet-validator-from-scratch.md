@@ -202,11 +202,11 @@ Save your keys to a safe place.
 
 ### Create account
 
-Go to [Clarity](https://clarity-testnet.make.services/#/accounts) and login using your Github or Google account. Click the "Import Key" button a select you public key file ```public_key.pem```. Do NOT, EVER, upload your private key. Give it a name and hit "Save".  
+Install the Signer app, and import your `secret_key.pem` file following the steps described under the `New User (Has Secret Keys)` section of the [Signer Guide](https://docs.cspr.community/docs/user-guides/SignerGuide.html).
 
 ### Fund account
 
-To fund an account visit the [Faucet](https://clarity-testnet.make.services/#/faucet) page. Select the account you want to fund and hit "Request Tokens". Wait until the request transaction succeeds.
+Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://docs.cspr.community/docs/user-guides/Connect-a-Wallet.html) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
 
 ## Configure and Run the Node
 

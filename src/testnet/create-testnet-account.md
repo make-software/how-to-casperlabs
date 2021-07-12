@@ -1,0 +1,1 @@
+Install the Signer app, and import your `secret_key.pem` file following the steps described under the `New User (Has Secret Keys)` section of the [Signer Guide](https://docs.cspr.community/docs/user-guides/SignerGuide.html).
