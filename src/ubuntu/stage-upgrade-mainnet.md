@@ -24,3 +24,11 @@ Execute the following command to download and stage the upgrade:
 ```
 curl -sSf genesis.casperlabs.io/casper/1_2_0/stage_upgrade.sh | sudo bash -
 ```
+
+#### Upgrade to casper-node v1.2.1
+For this upgrade, to `casper-node v1.2.1`, the activation point is `Era 1281`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+
+Execute the following command to download and stage the upgrade:
+```
+curl -sSf genesis.casperlabs.io/casper/1_2_1/stage_upgrade.sh | sudo bash -
+```
