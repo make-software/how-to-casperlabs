@@ -19,7 +19,6 @@ This documentation is aimed to help prospective node-operators set up and config
 ### Mainnet Guides
   - [Set up Main Net validator node from scratch on AWS](/docs/aws/setup-mainnet-validator-from-scratch.md)
   - [Set up Main Net validator node from scratch on Ubuntu](/docs/ubuntu/setup-mainnet-validator-from-scratch.md)
-  - [Mainnet Upgrade to casper-node v1.2.0](https://github.com/casper-network/casper-node/wiki/Upgrade-to-casper-node-v1.2.0)
 
 ### Testnet Guides
   - [Set up Test Net validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
