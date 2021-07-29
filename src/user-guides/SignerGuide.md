@@ -28,7 +28,7 @@ Signer let's you sign deploys on the Casper Network. To get started, you'll need
 
     ![Casper Signer Create Account](../../assets/SignerGuide/01-Casper-Signer-Create-Account.png)
 
-4. Select an Algorithm using the dropdown. Select `SECP256K1` unless you have a good reason not to do so. Then click `Create` to create the account.
+4. Select an Algorithm using the dropdown. (Select `ED25519` if you are not sure. See the FAQ for details.) Then click `Create` to create the account.
 
 ## New User (Has Secret Keys)
 
