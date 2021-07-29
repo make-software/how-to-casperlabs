@@ -42,10 +42,10 @@ Validators with Delegation rate of 100 are ones that either don't want to or are
 
 ## Which algorithm should I choose while creating a new account on Signer?
 
-There are 2 different encryption algorithms that the Casper network supports.
+There are two different encryption algorithms that the Casper Network supports.
 
-* `ED25519` is fast, and provides high level of security with fool proof session keys among other features. It is the default algorithm used while creating new accounts by the casper client.
-* `Secp256k1` is an efficient encryption algorithm and it's the same algorithm used by Bitcoin and Ethereum. If you would like to derive Ethereum or Bitcoin keys in the future using your private key, or planning to use your account with Ledger, then go with the SECP256k1 algorithm.
+* `Ed25519` is fast and provides a high level of security with foolproof session keys, among other features. It is the default algorithm used while creating new accounts by the Casper client.
+* `Secp256k1` is an efficient encryption algorithm, also used by Bitcoin and Ethereum. If you would like to derive Ethereum or Bitcoin keys in the future using your private key, or planning to use your account with Ledger, then go with the Secp256k1 algorithm.
 
 ## How can I delegate my tokens?
 
