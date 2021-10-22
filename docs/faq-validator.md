@@ -5,7 +5,7 @@
 Check that you opened the 35000 port in your firewall settings and the node listens to it:
 
 ```
-sudo netstat -tulpn
+sudo ss -lntp
 ```
 
 ## I receive {"code":32003,"message":"state query failed: ValueNotFound(\"Failed to find base key at path: Key::Account(...)\")"} when checking the balance
