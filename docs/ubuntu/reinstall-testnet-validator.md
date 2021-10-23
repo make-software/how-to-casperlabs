@@ -185,7 +185,7 @@ git fetch
 > installed.
 
 ```
-git checkout release-1.3.2
+git checkout release-1.4.1
 ```
 
 #### Remove previous builds
