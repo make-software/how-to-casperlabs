@@ -146,7 +146,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.3.2
+git checkout release-1.3.4
 ```
 
 #### Build the contracts
