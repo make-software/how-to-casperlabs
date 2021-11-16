@@ -53,3 +53,4 @@ An easy, web-based staking UI is now available on [CSPR.Live](https://cspr.live)
 
 1. [Install CasperLabs Signer](https://docs.cspr.community/docs/user-guides/SignerGuide.html)
 2. Transfer funds to your wallet on the Signer app
+3. [Delegate your CSPR stake](https://docs.cspr.community/docs/user-guides/Delegating-CSPR-Stake.html)
