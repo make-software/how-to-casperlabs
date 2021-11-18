@@ -45,7 +45,7 @@ Validators with Delegation rate of 100 are ones that either don't want to or are
 There are two different encryption algorithms that the Casper Network supports.
 
 * `Ed25519` is fast and provides a high level of security with foolproof session keys, among other features. It is the default algorithm used while creating new accounts by the Casper client.
-* `Secp256k1` is an efficient encryption algorithm, also used by Bitcoin and Ethereum. If you would like to derive Ethereum or Bitcoin keys in the future using your private key, or planning to use your account with Ledger, then go with the Secp256k1 algorithm.
+* `Secp256k1` is an efficient encryption algorithm, also used by Bitcoin and Ethereum. If you would like to derive Ethereum or Bitcoin keys in the future using your private key, then go with the Secp256k1 algorithm.
 
 ## How can I delegate my tokens?
 
@@ -53,3 +53,4 @@ An easy, web-based staking UI is now available on [CSPR.Live](https://cspr.live)
 
 1. [Install CasperLabs Signer](https://docs.cspr.community/docs/user-guides/SignerGuide.html)
 2. Transfer funds to your wallet on the Signer app
+3. [Delegate your CSPR stake](https://docs.cspr.community/docs/user-guides/Delegating-CSPR-Stake.html)
