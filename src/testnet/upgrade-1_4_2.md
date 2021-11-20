@@ -1,4 +1,4 @@
-# Upgrade to casper-node v1.4.1
+# Upgrade to casper-node v1.4.2
 
 ## Introduction and Timing
 We are requesting that all Casper Testnet participants stage the upgrade of their nodes to a new version of `casper_node`
