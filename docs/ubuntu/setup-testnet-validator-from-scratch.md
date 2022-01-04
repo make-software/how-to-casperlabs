@@ -141,7 +141,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.4.1
+git checkout release-1.4.4
 ```
 
 #### Build the contracts
@@ -310,6 +310,15 @@ Execute the following two commands, one by one:
 ```
 sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_3
 sudo -u casper /etc/casper/config_from_example.sh 1_4_3
+```
+
+#### Upgrade to casper-node v1.4.4
+For this upgrade, to `casper-node v1.4.4`, the activation point is `Era 3264`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+
+Execute the following two commands, one by one:
+```
+sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_4
+sudo -u casper /etc/casper/config_from_example.sh 1_4_4
 ```
 
 ### Start the node
