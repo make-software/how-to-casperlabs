@@ -5,7 +5,7 @@
 > the [Test Net Code of Conduct and Incentive Requirements](../testnet.md). Failure to do so may reduce or fully 
 > disqualify any Test Net incentive participation.
 > 
-> Before you set up your node, make sure it conforms to the minimum [Recommended Hardware Specifications](https://docs.casperlabs.io/en/latest/node-operator/hardware.html)
+> Before you set up your node, make sure it conforms to the minimum [Recommended Hardware Specifications](https://casper.network/docs/operators/hardware)
 
 
 ## Create security group 
@@ -32,7 +32,7 @@ Create elastic IP and assign it to the instance
 > the [Test Net Code of Conduct and Incentive Requirements](../testnet.md). Failure to do so may reduce or fully 
 > disqualify any Test Net incentive participation.
 > 
-> Before you set up your node, make sure it conforms to the minimum [Recommended Hardware Specifications](https://docs.casperlabs.io/en/latest/node-operator/hardware.html)
+> Before you set up your node, make sure it conforms to the minimum [Recommended Hardware Specifications](https://casper.network/docs/operators/hardware)
 
 
 > ### Note  
