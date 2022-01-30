@@ -43,4 +43,4 @@ This documentation is aimed to help prospective node-operators set up and config
 - [Validator FAQ](/docs/faq-validator.md)
 
 ### Have questions?
-Go to the [#validators-general](https://discord.gg/uGv72geF) channel on Discord
+Go to the `#validators-general` channel [on Discord](https://discord.gg/casperblockchain)
