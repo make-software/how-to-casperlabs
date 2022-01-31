@@ -8,7 +8,6 @@ This documentation aims to help with onboarding the new end users of the Casper 
   - 💸 [Transfer CSPR](/docs/user-guides/Transfer-CSPR.md)
   - 🥩 [Delegating CSPR Stake](/docs/user-guides/Delegating-CSPR-Stake.md)
   - 🥙 [Undelegating CSPR Stake](/docs/user-guides/Undelegating-CSPR-Stake.md)
-  - 🔑 [Generate Keys](/docs/user-guides/Generate-Keys.md)
 
   - ❓ [User FAQ](/docs/faq-user.md)
 
