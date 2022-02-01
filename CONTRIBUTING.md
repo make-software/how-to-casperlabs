@@ -5,10 +5,7 @@ The following is a set of rules and guidelines for contributing to this repo. Pl
 
 ## Submitting issues
 
-If you have questions about how to install and use Signer on [CSPR.Live](https://cspr.live) or about how to install and operate a validator node on the Casper Network, please direct these to the related discord channels:
-* [#validators-general](https://discord.gg/S398hSJS)
-* [#node-tech-support](https://discord.gg/8urw83VN)
-* [#casperdotlive](https://discord.gg/eW8yfJvu)
+If you have questions about how to install and use Signer on [CSPR.Live](https://cspr.live) or about how to install and operate a validator node on the Casper Network, please direct these to the related [discord channels](https://discord.gg/casperblockchain): `#validators-general`, `#node-tech-support`, `#casperdotlive`
 
 ### Guidelines
 * Please search the existing issues first, it's likely that your issue was already reported or even fixed.
