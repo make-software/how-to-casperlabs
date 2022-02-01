@@ -42,7 +42,6 @@ files=(
     src/user-guides/Transfer-CSPR.md
     src/user-guides/Delegating-CSPR-Stake.md
     src/user-guides/Undelegating-CSPR-Stake.md
-    src/user-guides/Generate-Keys.md
 )
 
 for file in ${files[*]}
