@@ -5,11 +5,11 @@ We are requesting that all Casper Testnet participants stage the upgrade of thei
 immediately, using the instructions below. "Staging an upgrade" is a process in which you tell your node to download
 the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point.
 
-For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 3672`, which will be approximately around:
-* Wednesday February 09, 2022 at 15:35 UTC
-* Wednesday February 09, 2022 at 16:35 CET
-* Wednesday February 09, 2022 at 10:35 EST
-* Wednesday February 09, 2022 at 07:35 PST
+For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4102`, which will be approximately around:
+* Thursday March 17, 2022 at 12:39 UTC
+* Thursday March 17, 2022 at 13:39 CET
+* Thursday March 17, 2022 at 07:39 EST
+* Thursday March 17, 2022 at 04:39 PST
 
 In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the
 upgrade well ahead of the activation point, so that your node will be upgraded on time.
@@ -38,7 +38,7 @@ called `next_upgrade`, which if you successfully staged your upgrade, will have 
 
 ```json
   "next_upgrade": {
-    "activation_point": 3672,
+    "activation_point": 4102,
     "protocol_version": "1.4.5"
   },
 ```

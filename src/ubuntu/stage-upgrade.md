@@ -101,7 +101,7 @@ sudo -u casper /etc/casper/config_from_example.sh 1_4_4
 ```
 
 #### Upgrade to casper-node v1.4.5
-For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 3672`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4102`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
 
 Execute the following two commands, one by one:
 ```
