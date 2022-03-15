@@ -8,8 +8,8 @@ the upgrade files and prepare them, so that they can automatically be applied at
 For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4102`, which will be approximately around:
 * Thursday March 17, 2022 at 12:39 UTC
 * Thursday March 17, 2022 at 13:39 CET
-* Thursday March 17, 2022 at 07:39 EST
-* Thursday March 17, 2022 at 04:39 PST
+* Thursday March 17, 2022 at 08:39 EST
+* Thursday March 17, 2022 at 05:39 PST
 
 In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the
 upgrade well ahead of the activation point, so that your node will be upgraded on time.
