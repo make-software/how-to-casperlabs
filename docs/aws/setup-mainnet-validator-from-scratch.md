@@ -135,7 +135,7 @@ Go to your home directory and clone the node repository. Later we will use this 
 ```
 cd ~
 
-git clone git://github.com/CasperLabs/casper-node.git
+git clone https://github.com/casper-network/casper-node.git
 cd casper-node/
 ```
 
