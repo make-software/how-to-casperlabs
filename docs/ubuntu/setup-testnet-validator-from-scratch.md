@@ -331,6 +331,11 @@ sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_5
 sudo -u casper /etc/casper/config_from_example.sh 1_4_5
 ```
 
+Then to update the max size for your node's database file to a safer point, execute the following command:
+```
+sudo sed -i "/max_global_state_size =/c\max_global_state_size = 1_539_316_278_886" /etc/casper/1_4_5/config.toml
+```
+
 ### Start the node
 
 ```
