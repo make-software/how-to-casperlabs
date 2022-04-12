@@ -124,7 +124,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.4.4
+git checkout release-1.4.5
 ```
 
 #### Build the contracts
@@ -271,6 +271,14 @@ For this upgrade, to `casper-node v1.4.4`, the activation point is `Era 3435`. Y
 Execute the following command to download and stage the upgrade:
 ```
 cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_4/stage_upgrade.sh | sudo bash -
+```
+
+#### Upgrade to casper-node v1.4.5
+For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4417`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+
+Execute the following command to download and stage the upgrade:
+```
+cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_5/stage_upgrade.sh | sudo bash -
 ```
 
 ### Start the node
