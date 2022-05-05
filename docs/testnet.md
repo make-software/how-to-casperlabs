@@ -35,7 +35,7 @@ It is mandatory that all participants adhere to the Testnet Code of Conduct belo
 4. Stage and participate in node software updates before they are slated to take effect. This requires being attentive for and responsive to notifications
    in the Telegram channel.
 5. If you have to take your node offline, unbond your stake first.
-6. Follow the minimum [Recommended Hardware Specifications](https://casper.network/docs/operators/hardware)
+6. Follow the minimum [Recommended Hardware Specifications](https://docs.casperlabs.io/operators/hardware/)
 7. Participation is entirely at your own risk and you agree to hold ETA, Casper and the DEVxDAO, and their employees, officers, directors, paid consultants
    and agents, harmless from any and all liability.
 
