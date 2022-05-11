@@ -331,9 +331,13 @@ sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_5
 sudo -u casper /etc/casper/config_from_example.sh 1_4_5
 ```
 
-Then to update the max size for your node's database file to a safer point, execute the following command:
+#### Upgrade to casper-node v1.4.6
+For this upgrade, to `casper-node v1.4.6`, the activation point is `Era 4785`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+
+Execute the following two commands, one by one:
 ```
-sudo sed -i "/max_global_state_size =/c\max_global_state_size = 1_539_316_278_886" /etc/casper/1_4_5/config.toml
+sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_6
+sudo -u casper /etc/casper/config_from_example.sh 1_4_6
 ```
 
 ### Start the node
