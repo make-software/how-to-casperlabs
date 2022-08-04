@@ -6,10 +6,10 @@ immediately, using the instructions below. "Staging an upgrade" is a process in 
 the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point.
 
 For this upgrade, to `casper-node v1.4.7`, the activation point is `Era 5828`, which will be approximately around:
-* Friday August 08, 2022 at 12:59 UTC
-* Friday August 08, 2022 at 13:59 CET
-* Friday August 08, 2022 at 08:59 EST
-* Friday August 08, 2022 at 05:59 PST
+* Monday August 08, 2022 at 12:59 UTC
+* Monday August 08, 2022 at 13:59 CET
+* Monday August 08, 2022 at 08:59 EST
+* Monday August 08, 2022 at 05:59 PST
 
 In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the
 upgrade well ahead of the activation point, so that your node will be upgraded on time.
