@@ -38,7 +38,8 @@ This documentation is aimed to help prospective node-operators set up and config
   - [Testnet Upgrade to casper-node v1.4.3](/docs/testnet/upgrade-1_4_3.md)
   - [Testnet Upgrade to casper-node v1.4.4](/docs/testnet/upgrade-1_4_4.md)
   - [Testnet Upgrade to casper-node v1.4.5](/docs/testnet/upgrade-1_4_5.md)
-  - [IMPORTANT - Testnet Upgrade to casper-node v1.4.6 before May 13](/docs/testnet/upgrade-1_4_6.md)
+  - [Testnet Upgrade to casper-node v1.4.6](/docs/testnet/upgrade-1_4_6.md)
+  - [IMPORTANT - Testnet Upgrade to casper-node v1.4.7 before August 08](/docs/testnet/upgrade-1_4_7.md)
 
 ### Miscellaneous
 - [Validator FAQ](/docs/faq-validator.md)
