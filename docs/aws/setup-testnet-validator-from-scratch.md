@@ -376,6 +376,15 @@ sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_7
 sudo -u casper /etc/casper/config_from_example.sh 1_4_7
 ```
 
+#### Upgrade to casper-node v1.4.8
+For this upgrade, to `casper-node v1.4.8`, the activation point is `Era 5948`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
+
+Execute the following two commands, one by one:
+```
+sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_8
+sudo -u casper /etc/casper/config_from_example.sh 1_4_8
+```
+
 ### Start the node
 
 ```
