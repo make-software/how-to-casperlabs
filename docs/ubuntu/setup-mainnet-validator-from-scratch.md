@@ -5,6 +5,15 @@
 > 
 > Expect that setting up a node and bonding it to the network will take about 30 minutes
 
+## Open Firewall Ports
+
+In your firewall set-up, make sure you expose the following ports to public and that they're routed to your node:
+
+- ```7777``` - rpc port
+- ```8888``` - status port
+- ```9999``` - event stream port
+- ```35000``` - gossip port
+
 ## Install software
 
 ### Update package repositories
@@ -147,6 +156,21 @@ Save your keys to a safe place. The public key hex file is used to identify your
 To fund an account, send tokens (from an exchange or from another account on the network) to it, by using the content of the `public_key_hex` file as the recipient address. Wait until the transaction succeeds.
 
 ## Configure and Run the Node
+
+### Configure the node's firewall
+In order to secure your node somewhat from unauthorized connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
+
+```
+cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+chmod +x ./firewall.sh
+
+# Look at this and make sure you understand what it does and want to run it on your server.
+# You will need to provide `y` to reset and enable steps.
+cat ./firewall.sh
+
+# Install firewall
+sudo ./firewall.sh
+```
 
 ### Stage all protocol upgrades
 
