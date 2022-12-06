@@ -185,7 +185,7 @@ The above command will download and stage all available node upgrades to your ma
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/1_0_0/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
