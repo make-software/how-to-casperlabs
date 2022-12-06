@@ -272,6 +272,7 @@ RPC: Ready
 
 If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
 
+The watch command also allows an `--ip` argument to use with a node on the same network that is in sync.  This will show how far behind your node currently is.
 #### Wait for node to catch up
 Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully 
 caught up with the network. You can recognize this by log entries that tell you that joining has finished, and that the
