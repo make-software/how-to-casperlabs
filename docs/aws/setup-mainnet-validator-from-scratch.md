@@ -170,21 +170,6 @@ To fund an account, send tokens (from an exchange or from another account on the
 
 ## Configure and Run the Node
 
-### Configure the node's firewall
-In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
-
-```
-cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
-chmod +x ./firewall.sh
-
-# Look at this and make sure you understand what it does and want to run it on your server.
-# You will need to provide `y` to reset and enable steps.
-cat ./firewall.sh
-
-# Install firewall
-sudo ./firewall.sh
-```
-
 ### Stage all protocol upgrades
 
 ```
