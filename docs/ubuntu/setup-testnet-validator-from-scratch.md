@@ -22,20 +22,6 @@ In your firewall set-up, make sure you expose the following ports to public and 
 - ```9999``` - event stream port
 - ```35000``` - gossip port
 
-## Set version and network you're going to set up
-
-Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
-
-```
-CASPER_VERSION=1_0_0
-```
-
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `casper-test`
-
-```
-CASPER_NETWORK=casper-test
-```
-
 ## Install software
 
 ### Update package repositories
@@ -183,12 +169,28 @@ Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://doc
 
 ## Configure and Run the Node
 
-### Set up configuration
+### Configure the node's firewall
+In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
-sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
+cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+chmod +x ./firewall.sh
+
+# Look at this and make sure you understand what it does and want to run it on your server.
+# You will need to provide `y` to reset and enable steps.
+cat ./firewall.sh
+
+# Install firewall
+sudo ./firewall.sh
 ```
+
+### Stage all protocol upgrades
+
+```
+sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
+```
+
+The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
 
 ### Get known validator IP
 
@@ -217,146 +219,11 @@ Get the trusted hash from the network:
 # Get trusted_hash into config.toml
 while read -r KNOWN_VALIDATOR_IP; do TRUSTED_HASH=$(timeout 2 casper-client get-block --node-address http://$KNOWN_VALIDATOR_IP:7777 -b 20 | jq -r .result.block.hash | tr -d '\n'); if [[ ! -z "$TRUSTED_HASH" ]]; then break; fi; done <<< "$KNOWN_VALIDATOR_IPS"
 
-if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/$CASPER_VERSION/config.toml; fi
+if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
 ```
 
-### Stage the upgrades
-"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point. Stage all of the following upgrades from the
-oldest to the newest (from the top to the bottom).
-
-#### Upgrade to casper-node v1.1.0
-For this upgrade, to `casper-node v1.1.0`, the activation point is `Era 166`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_1_0
-sudo -u casper /etc/casper/config_from_example.sh 1_1_0
-```
-
-#### Upgrade to casper-node v1.1.2
-For this upgrade, to `casper-node v1.1.2`, the activation point is `Era 388`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_1_2
-sudo -u casper /etc/casper/config_from_example.sh 1_1_2
-```
-
-#### Upgrade to casper-node v1.2.0
-For this upgrade, to `casper-node v1.2.0`, the activation point is `Era 490`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_2_0
-sudo -u casper /etc/casper/config_from_example.sh 1_2_0
-```
-
-#### Upgrade to casper-node v1.2.1
-For this upgrade, to `casper-node v1.2.1`, the activation point is `Era 1143`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_2_1
-sudo -u casper /etc/casper/config_from_example.sh 1_2_1
-```
-
-#### Upgrade to casper-node v1.3.1
-For this upgrade, to `casper-node v1.3.1`, the activation point is `Era 1346`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_3_1
-sudo -u casper /etc/casper/config_from_example.sh 1_3_1
-```
-#### Upgrade to casper-node v1.3.2
-For this upgrade, to `casper-node v1.3.2`, the activation point is `Era 1418`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_3_2
-sudo -u casper /etc/casper/config_from_example.sh 1_3_2
-```
-
-#### Upgrade to casper-node v1.3.4
-For this upgrade, to `casper-node v1.3.4`, the activation point is `Era 2005`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_3_4
-sudo -u casper /etc/casper/config_from_example.sh 1_3_4
-```
-
-#### Upgrade to casper-node v1.4.1
-For this upgrade, to `casper-node v1.4.1`, the activation point is `Era 2400`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_1
-sudo -u casper /etc/casper/config_from_example.sh 1_4_1
-```
-
-#### Upgrade to casper-node v1.4.2
-For this upgrade, to `casper-node v1.4.2`, the activation point is `Era 2736`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_2
-sudo -u casper /etc/casper/config_from_example.sh 1_4_2
-```
-
-#### Upgrade to casper-node v1.4.3
-For this upgrade, to `casper-node v1.4.3`, the activation point is `Era 2940`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_3
-sudo -u casper /etc/casper/config_from_example.sh 1_4_3
-```
-
-#### Upgrade to casper-node v1.4.4
-For this upgrade, to `casper-node v1.4.4`, the activation point is `Era 3264`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_4
-sudo -u casper /etc/casper/config_from_example.sh 1_4_4
-```
-
-#### Upgrade to casper-node v1.4.5
-For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4102`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_5
-sudo -u casper /etc/casper/config_from_example.sh 1_4_5
-```
-
-#### Upgrade to casper-node v1.4.6
-For this upgrade, to `casper-node v1.4.6`, the activation point is `Era 4785`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_6
-sudo -u casper /etc/casper/config_from_example.sh 1_4_6
-```
-
-#### Upgrade to casper-node v1.4.7
-For this upgrade, to `casper-node v1.4.7`, the activation point is `Era 5828`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_7
-sudo -u casper /etc/casper/config_from_example.sh 1_4_7
-```
-
-#### Upgrade to casper-node v1.4.8
-For this upgrade, to `casper-node v1.4.8`, the activation point is `Era 5948`. In order to not have points deducted for your Testnet reward score, you have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following two commands, one by one:
-```
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_4_8
-sudo -u casper /etc/casper/config_from_example.sh 1_4_8
-```
+### Staging the upgrades
+"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point. The ```node_util``` script used earlier will have staged all available upgrades for your node. 
 
 ### Start the node
 
@@ -387,6 +254,37 @@ You should see your IP address on the list
 ```
 curl -s http://127.0.0.1:8888/status
 ```
+
+#### Monitor the node's sync progres
+You can monitor the node's synchronization progress by using the ```node_util.py``` utility script again:
+
+```
+/etc/casper/node_util.py watch
+```
+
+When you run the watch command, expect to see something like this:
+```
+Last Block: 630151 (Era: 4153)
+Peer Count: 297
+Uptime: 4days 6h 40m 18s 553ms
+Build: 1.4.5-a7f6a648d-casper-mainnet
+Key: 0147b4cae09d64ab6acd02dd0868722be9a9bcc355c2fdff7c2c244cbfcd30f158
+Next Upgrade: None
+
+RPC: Ready
+
+● casper-node-launcher.service - Casper Node Launcher
+   Loaded: loaded (/lib/systemd/system/casper-node-launcher.service; enabled; vendor preset: enabled)
+   Active: active (running) since Wed 2022-03-16 21:08:50 UTC; 4 days ago
+     Docs: https://docs.casperlabs.io
+ Main PID: 2934 (casper-node-lau)
+    Tasks: 12 (limit: 4915)
+   CGroup: /system.slice/casper-node-launcher.service
+           ├─ 2934 /usr/bin/casper-node-launcher
+           └─16842 /var/lib/casper/bin/1_4_5/casper-node validator /etc/casper/1_4_5/config.toml
+```
+
+If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
 
 #### Wait for node to catch up
 Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully 
