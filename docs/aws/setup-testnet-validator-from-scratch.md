@@ -49,6 +49,14 @@ In your firewall set-up, make sure you expose the following ports to public and 
 - ```9999``` - event stream port
 - ```35000``` - gossip port
 
+## Set network you're going to set up
+
+Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `casper-test`
+
+```
+CASPER_NETWORK=casper-test
+```
+
 ## Install software
 
 ### Update package repositories
@@ -184,7 +192,7 @@ It will create three files in the ```/etc/casper/validator_keys``` directory:
 - ```public_key.pem``` - your public key
 - ```public_key_hex``` - hex representation of your public key; copy it to your machine to create an account
 
-Save your keys to a safe place. 
+Save your keys to a safe place. The public key hex file is used to identify your account when delegators stake their tokens with you or if you are transferring CSPR to this account.
 
 ### Create account
 
@@ -196,10 +204,25 @@ Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://doc
 
 ## Configure and Run the Node
 
+### Configure the node's firewall
+In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
+
+```
+cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+chmod +x ./firewall.sh
+
+# Look at this and make sure you understand what it does and want to run it on your server.
+# You will need to provide `y` to reset and enable steps.
+cat ./firewall.sh
+
+# Install firewall
+sudo ./firewall.sh
+```
+
 ### Stage all protocol upgrades
 
 ```
-sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
+sudo -u casper /etc/casper/node_util.py stage_protocols $CASPER_NETWORK.conf
 ```
 
 The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
@@ -234,8 +257,10 @@ while read -r KNOWN_VALIDATOR_IP; do TRUSTED_HASH=$(timeout 2 casper-client get-
 if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
 ```
 
-### Staging the upgrades
-"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point. The ```node_util``` script used earlier will have staged all available upgrades for your node.
+### Stage the upgrades
+"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point.
+
+The same ```node_util.py stage_protocols``` script used earlier will stage available upgrades for your node since when you started it.  There is no harm in running it multiple times as it will not re-stage any already loaded.
 
 ### Start the node
 
@@ -298,8 +323,10 @@ RPC: Ready
 
 If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
 
+The watch command also allows an `--ip` argument to use with a node on the same network that is in sync.  This will show how far behind your node currently is.
+
 #### Wait for node to catch up
-Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully 
+Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully
 caught up with the network. You can recognize this by log entries that tell you that joining has finished, and that the
 RPC and REST servers have started:
 
@@ -307,7 +334,6 @@ RPC and REST servers have started:
 {"timestamp":"Feb 09 02:28:35.577","level":"INFO","fields":{"message":"finished joining"},"target":"casper_node::cli"}
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started JSON-RPC server","address":"0.0.0.0:7777"},"target":"casper_node::components::rpc_server::http_server"}
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started REST server","address":"0.0.0.0:8888"},"target":"casper_node::components::rest_server::http_server"}
-```
 
 ## Bond to the network
 
