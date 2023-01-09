@@ -16,12 +16,11 @@ This documentation aims to help with onboarding the new end users of the Casper 
 This documentation is aimed to help prospective node-operators set up and configure their Casper Network validator nodes.
 
 ### Mainnet Guides
-  - [Set up Main Net validator node from scratch on AWS](/docs/aws/setup-mainnet-validator-from-scratch.md)
-  - [Set up Main Net validator node from scratch on Ubuntu](/docs/ubuntu/setup-mainnet-validator-from-scratch.md)
+  - [Set up MainNet validator node](https://github.com/casper-network/casper-node/wiki/Mainnet-Node-Installation-Instructions)
 
 ### Testnet Guides
-  - [Set up Test Net validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
-  - [Set up Test Net validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
+  - [Set up TestNet validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
+  - [Set up TestNet validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
 
 ### Testnet Information
   - [Test Net Code of Conduct and Incentive Requirements](/docs/testnet.md)
