@@ -1,1 +1,0 @@
-To fund an account, send tokens (from an exchange or from another account on the network) to it, by using the content of the `public_key_hex` file as the recipient address. Wait until the transaction succeeds.
