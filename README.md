@@ -15,32 +15,17 @@ This documentation aims to help with onboarding the new end users of the Casper 
 
 This documentation is aimed to help prospective node-operators set up and configure their Casper Network validator nodes.
 
-### Mainnet Guides
-  - [Set up Main Net validator node from scratch on AWS](/docs/aws/setup-mainnet-validator-from-scratch.md)
-  - [Set up Main Net validator node from scratch on Ubuntu](/docs/ubuntu/setup-mainnet-validator-from-scratch.md)
+### MainNet Guides
+  - [Set up MainNet validator node](https://github.com/casper-network/casper-node/wiki/Mainnet-Node-Installation-Instructions)
 
-### Testnet Guides
-  - [Set up Test Net validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
-  - [Set up Test Net validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
+### TestNet Guides
+  - [Set up TestNet validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
+  - [Set up TestNet validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
 
-### Testnet Information
-  - [Test Net Code of Conduct and Incentive Requirements](/docs/testnet.md)
-  - [Testnet Rewards](/docs/testnet-rewards.md)
-  - [Testnet Upgrade to casper-node v1.1.0](/docs/testnet/upgrade-1_1_0.md)
-  - [Testnet Upgrade to casper-node v1.1.2](/docs/testnet/upgrade-1_1_2.md)
-  - [Testnet Upgrade to casper-node v1.2.0](/docs/testnet/upgrade-1_2_0.md)
-  - [Testnet Upgrade to casper-node v1.2.1](/docs/testnet/upgrade-1_2_1.md)
-  - [Testnet Upgrade to casper-node v1.3.1](/docs/testnet/upgrade-1_3_1.md)
-  - [Testnet Upgrade to casper-node v1.3.2](/docs/testnet/upgrade-1_3_2.md)
-  - [Testnet Upgrade to casper-node v1.3.4](/docs/testnet/upgrade-1_3_4.md)
-  - [Testnet Upgrade to casper-node v1.4.1](/docs/testnet/upgrade-1_4_1.md)
-  - [Testnet Upgrade to casper-node v1.4.2](/docs/testnet/upgrade-1_4_2.md)
-  - [Testnet Upgrade to casper-node v1.4.3](/docs/testnet/upgrade-1_4_3.md)
-  - [Testnet Upgrade to casper-node v1.4.4](/docs/testnet/upgrade-1_4_4.md)
-  - [Testnet Upgrade to casper-node v1.4.5](/docs/testnet/upgrade-1_4_5.md)
-  - [Testnet Upgrade to casper-node v1.4.6](/docs/testnet/upgrade-1_4_6.md)
-  - [Testnet Upgrade to casper-node v1.4.7](/docs/testnet/upgrade-1_4_7.md)
-  - [Testnet Upgrade to casper-node v1.4.8](/docs/testnet/upgrade-1_4_8.md)
+### TestNet Information
+  - [TestNet Code of Conduct and Incentive Requirements](/docs/testnet.md)
+  - [TestNet Rewards](/docs/testnet-rewards.md)
+  - [TestNet Upgrades](/docs/testnet/testnet-upgrades.md)
 
 ### Miscellaneous
 - [Validator FAQ](/docs/faq-validator.md)
