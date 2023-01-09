@@ -27,13 +27,7 @@ Create elastic IP and assign it to the instance
 > 
 > Expect that setting up a node and bonding it to the network will take about 30 minutes
 
-## Set version and network you're going to set up
-
-Set a variable defining the version of the node package you're setting up. For `1.0.0`, use `1_0_0`
-
-```
-CASPER_VERSION=1_0_0
-```
+## Set network you're going to set up
 
 Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `casper-test`
 
@@ -176,7 +170,7 @@ It will create three files in the ```/etc/casper/validator_keys``` directory:
 - ```public_key.pem``` - your public key
 - ```public_key_hex``` - hex representation of your public key; copy it to your machine to create an account
 
-Save your keys to a safe place. 
+Save your keys to a safe place. The public key hex file is used to identify your account when delegators stake their tokens with you or if you are transferring CSPR to this account.
 
 ### Fund account
 
@@ -184,19 +178,35 @@ To fund an account, send tokens (from an exchange or from another account on the
 
 ## Configure and Run the Node
 
-### Set up configuration
+### Configure the node's firewall
+In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
-sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
+cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+chmod +x ./firewall.sh
+
+# Look at this and make sure you understand what it does and want to run it on your server.
+# You will need to provide `y` to reset and enable steps.
+cat ./firewall.sh
+
+# Install firewall
+sudo ./firewall.sh
 ```
+
+### Stage all protocol upgrades
+
+```
+sudo -u casper /etc/casper/node_util.py stage_protocols $CASPER_NETWORK.conf
+```
+
+The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
 
 ### Get known validator IP
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/1_0_0/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
@@ -218,114 +228,13 @@ Get the trusted hash from the network:
 # Get trusted_hash into config.toml
 while read -r KNOWN_VALIDATOR_IP; do TRUSTED_HASH=$(timeout 2 casper-client get-block --node-address http://$KNOWN_VALIDATOR_IP:7777 -b 20 | jq -r .result.block.hash | tr -d '\n'); if [[ ! -z "$TRUSTED_HASH" ]]; then break; fi; done <<< "$KNOWN_VALIDATOR_IPS"
 
-if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/$CASPER_VERSION/config.toml; fi
+if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
 ```
 
 ### Stage the upgrades
-"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point. Stage all of the following upgrades from the oldest to the newest (from the top to the bottom).
+"Staging an upgrade" is a process in which you tell your node to download the upgrade files and prepare them, so that they can automatically be applied at the pre-defined activation point. 
 
-#### Upgrade to casper-node v1.1.1
-For this upgrade, to `casper-node v1.1.1`, the activation point is `Era 347`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time. You may see the [details of the upgrade on GitHub](https://github.com/casper-network/casper-node/releases/tag/v1.1.1).
-
-Execute the following command to download and stage the upgrade:
-```
-curl -sSf genesis.casperlabs.io/casper/1_1_0/stage_1_1_0_upgrade.sh | sudo bash
-```
-
-#### Upgrade to casper-node v1.1.2
-For this upgrade, to `casper-node v1.1.2`, the activation point is `Era 574`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time. You may see the [details of the upgrade on GitHub](https://github.com/casper-network/casper-node/releases/tag/v1.1.2).
-
-Execute the following command to download and stage the upgrade:
-```
-curl -sSf genesis.casperlabs.io/casper/1_1_2/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.2.0
-For this upgrade, to `casper-node v1.2.0`, the activation point is `Era 694`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-curl -sSf genesis.casperlabs.io/casper/1_2_0/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.2.1
-For this upgrade, to `casper-node v1.2.1`, the activation point is `Era 1281`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-curl -sSf genesis.casperlabs.io/casper/1_2_1/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.3.2
-For this upgrade, to `casper-node v1.3.2`, the activation point is `Era 1605`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_3_2/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.3.4
-For this upgrade, to `casper-node v1.3.4`, the activation point is `Era 2193`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_3_4/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.1
-For this upgrade, to `casper-node v1.4.1`, the activation point is `Era 2600`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_1/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.3
-For this upgrade, to `casper-node v1.4.3`, the activation point is `Era 3111`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_3/stage_upgrade.sh | sudo bash -
-```
-#### Upgrade to casper-node v1.4.4
-For this upgrade, to `casper-node v1.4.4`, the activation point is `Era 3435`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_4/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.5
-For this upgrade, to `casper-node v1.4.5`, the activation point is `Era 4417`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_5/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.6
-For this upgrade, to `casper-node v1.4.6`, the activation point is `Era 4968`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_6/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.8
-For this upgrade, to `casper-node v1.4.8`, the activation point is `Era 6130`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_8/stage_upgrade.sh | sudo bash -
-```
-
-#### Upgrade to casper-node v1.4.9
-For this upgrade, to `casper-node v1.4.9`, the activation point is `Era 7210`. You have to make sure you have properly staged the upgrade well ahead of the activation point, so that your node will be upgraded on time.
-
-Execute the following command to download and stage the upgrade:
-```
-cd ~; curl -sSf genesis.casperlabs.io/casper/1_4_9/stage_upgrade.sh | sudo bash -
-```
+The same ```node_util.py stage_protocols``` script used earlier will stage available upgrades for your node since when you started it.  There is no harm in running it multiple times as it will not re-stage any already loaded.
 
 ### Start the node
 
@@ -357,8 +266,41 @@ You should see your IP address on the list
 curl -s http://127.0.0.1:8888/status
 ```
 
+#### Monitor the node's sync progres
+You can monitor the node's synchronization progress by using the ```node_util.py``` utility script again:
+
+```
+/etc/casper/node_util.py watch
+```
+
+When you run the watch command, expect to see something like this:
+```
+Last Block: 630151 (Era: 4153)
+Peer Count: 297
+Uptime: 4days 6h 40m 18s 553ms
+Build: 1.4.5-a7f6a648d-casper-mainnet
+Key: 0147b4cae09d64ab6acd02dd0868722be9a9bcc355c2fdff7c2c244cbfcd30f158
+Next Upgrade: None
+
+RPC: Ready
+
+● casper-node-launcher.service - Casper Node Launcher
+   Loaded: loaded (/lib/systemd/system/casper-node-launcher.service; enabled; vendor preset: enabled)
+   Active: active (running) since Wed 2022-03-16 21:08:50 UTC; 4 days ago
+     Docs: https://docs.casperlabs.io
+ Main PID: 2934 (casper-node-lau)
+    Tasks: 12 (limit: 4915)
+   CGroup: /system.slice/casper-node-launcher.service
+           ├─ 2934 /usr/bin/casper-node-launcher
+           └─16842 /var/lib/casper/bin/1_4_5/casper-node validator /etc/casper/1_4_5/config.toml
+```
+
+If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
+
+The watch command also allows an `--ip` argument to use with a node on the same network that is in sync.  This will show how far behind your node currently is.
+
 #### Wait for node to catch up
-Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully 
+Before you do anything, such as trying to bond as a validator or perform any RPC calls, make sure your node has fully
 caught up with the network. You can recognize this by log entries that tell you that joining has finished, and that the
 RPC and REST servers have started:
 
@@ -366,7 +308,6 @@ RPC and REST servers have started:
 {"timestamp":"Feb 09 02:28:35.577","level":"INFO","fields":{"message":"finished joining"},"target":"casper_node::cli"}
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started JSON-RPC server","address":"0.0.0.0:7777"},"target":"casper_node::components::rpc_server::http_server"}
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started REST server","address":"0.0.0.0:8888"},"target":"casper_node::components::rest_server::http_server"}
-```
 
 ## Bond to the network
 

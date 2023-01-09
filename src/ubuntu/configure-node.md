@@ -1,18 +1,34 @@
 ## Configure and Run the Node
 
-### Set up configuration
+### Configure the node's firewall
+In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
 
 ```
-sudo -u casper /etc/casper/pull_casper_node_version.sh $CASPER_NETWORK.conf $CASPER_VERSION
-sudo -u casper /etc/casper/config_from_example.sh $CASPER_VERSION
+cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+chmod +x ./firewall.sh
+
+# Look at this and make sure you understand what it does and want to run it on your server.
+# You will need to provide `y` to reset and enable steps.
+cat ./firewall.sh
+
+# Install firewall
+sudo ./firewall.sh
 ```
+
+### Stage all protocol upgrades
+
+```
+sudo -u casper /etc/casper/node_util.py stage_protocols $CASPER_NETWORK.conf
+```
+
+The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
 
 ### Get known validator IP
 
 Let's get a known validator IP first. We'll use it multiple times later in the process.
 
 ```
-KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/$CASPER_VERSION/config.toml | grep known_addresses)
+KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/1_0_0/config.toml | grep known_addresses)
 KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
 IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
 
@@ -34,5 +50,5 @@ Get the trusted hash from the network:
 # Get trusted_hash into config.toml
 while read -r KNOWN_VALIDATOR_IP; do TRUSTED_HASH=$(timeout 2 casper-client get-block --node-address http://$KNOWN_VALIDATOR_IP:7777 -b 20 | jq -r .result.block.hash | tr -d '\n'); if [[ ! -z "$TRUSTED_HASH" ]]; then break; fi; done <<< "$KNOWN_VALIDATOR_IPS"
 
-if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/$CASPER_VERSION/config.toml; fi
+if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
 ```
