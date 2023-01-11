@@ -286,7 +286,7 @@ You should see your IP address on the list
 #### Check the node status
 
 ```
-curl -s http://127.0.0.1:8888/status
+curl -s http://127.0.0.1:8888/status | jq
 ```
 
 #### Monitor the node's sync progres
