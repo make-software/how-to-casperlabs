@@ -269,6 +269,8 @@ systemctl status casper-node-launcher
 
 #### Check the node log
 
+Please note that it is expected to see a lot of connection messages flooding your screen when you check the logs. Don't be scared by the `request timed out` and `outgoing connection failed` messages as long as they are all `INFO` level messages, and as long as you also see a lot of `linear chain block stored` messages, which means that your node is successfully fetching and storing existing blocks from other/older peers on the network.
+
 ```
 sudo tail -fn100 /var/log/casper/casper-node.log /var/log/casper/casper-node.stderr.log
 ```
