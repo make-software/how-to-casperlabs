@@ -221,11 +221,11 @@ After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will con
 > Setting the `trusted_hash` is only required if you join the network after Genesis has taken place. If you are joining 
 > prior to Genesis, you may skip this step and continue at "Start the node".
 
-Get the trusted hash from the network:
+Set the `trusted_hash` to the hash value of block `20` on Casper TestNet:
 
 ```
 # Get trusted_hash into config.toml
-while read -r KNOWN_VALIDATOR_IP; do TRUSTED_HASH=$(timeout 2 casper-client get-block --node-address http://$KNOWN_VALIDATOR_IP:7777 -b 20 | jq -r .result.block.hash | tr -d '\n'); if [[ ! -z "$TRUSTED_HASH" ]]; then break; fi; done <<< "$KNOWN_VALIDATOR_IPS"
+TRUSTED_HASH=d90602860b06b90a76e58bb7963898f2c1fd91c8e5c57f4a5a4ee42f70e1980c
 
 if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
 ```
