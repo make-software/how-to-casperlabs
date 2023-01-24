@@ -17,15 +17,35 @@ If you have questions about how to install and use Signer on [CSPR.Live](https:/
 
 Thanks for wanting to contribute to Casper Network - Information and How-To Guides. You rock!
 
-Workflow for contributions:
+### Workflow for contributions:
 * [Fork](https://github.com/make-software/how-to-casperlabs/fork) the main repo
 * Make your changes
 * Create a new pull request
 
-Notes:
+### Notes:
 * Typo corrections and new articles are welcome contributions.
 * The documentation is served on GitHub pages with Jekyll.
 * Make your changes in the `src` directory, then run the `build.sh` script to publish them to the docs directory.
 * Use markdown syntax for documentation.
 * Try to use includes as much as possible to avoid content duplication.
 * Respect the [license](https://github.com/make-software/how-to-casperlabs/blob/master/LICENSE) terms of the repo
+
+### Testing your changes:
+- You can have your clone deployed to GH Pages to see the results. This is what most people prefer to avoid installing dependencies locally, and adding extra config for local run.
+
+**OR**
+
+- You can;
+  - Add a `Gemfile` to your local clone with the content
+    ```
+    source "https://rubygems.org"
+    gem "github-pages", group: :jekyll_plugins
+    gem "webrick", "~> 1.7"
+    ```
+  - Then run these commands in the given order:
+    ```
+    bundle config set --local path 'vendor/bundle'
+    bundle install
+    bundle exec jekyll serve
+    ```
+    * Please note that the first two commands are meant to be run only once unless you delete the downloaded dependencies inside your clone dir.
