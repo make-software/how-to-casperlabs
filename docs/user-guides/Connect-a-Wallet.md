@@ -2,7 +2,7 @@
 
 ## What You'll Need
 
-A compatible CSPR wallet: [CasperLabs's Signer](SignerGuide.md). More wallets, including Ledger, are planned for the future.
+A compatible CSPR wallet: [Casper Signer](SignerGuide.md). More wallets, including Ledger, are planned for the future.
 
 ## Sign In
 
