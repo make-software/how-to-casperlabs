@@ -4,7 +4,7 @@ You can transfer CSPR tokens from your account to other accounts and exchanges b
 
 ## What You'll Need
 
-A compatible wallet with a CSPR balance: [CasperLabs's Signer](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce). More wallets, including Ledger, are planned for the future.
+A compatible wallet with a CSPR balance: [Casper Signer](https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce). More wallets, including Ledger, are planned for the future.
 
 ## The Basics
 
