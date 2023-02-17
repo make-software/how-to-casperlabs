@@ -15,6 +15,8 @@
 - [TestNet Upgrade to casper-node v1.4.6](upgrade-1_4_6.md)
 - [TestNet Upgrade to casper-node v1.4.7](upgrade-1_4_7.md)
 - [TestNet Upgrade to casper-node v1.4.8](upgrade-1_4_8.md)
+- [TestNet Upgrade to casper-node v1.4.10](upgrade-1_4_10.md)
+- [TestNet Upgrade to casper-node v1.4.13](upgrade-1_4_13.md)
 
 
 _Please note that the DEVxDAO's Casper Testnet program is implemented by the [DEVxDAO](https://devxdao.com) by providing rewards 
