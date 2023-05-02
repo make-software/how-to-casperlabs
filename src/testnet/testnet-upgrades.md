@@ -17,6 +17,7 @@
 - [TestNet Upgrade to casper-node v1.4.8](upgrade-1_4_8.md)
 - [TestNet Upgrade to casper-node v1.4.10](upgrade-1_4_10.md)
 - [TestNet Upgrade to casper-node v1.4.13](upgrade-1_4_13.md)
+- [TestNet Upgrade to casper-node v1.4.15](upgrade-1_4_15.md)
 
 [include ../disclaimer.md]
 
