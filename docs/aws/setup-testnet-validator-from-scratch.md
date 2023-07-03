@@ -372,7 +372,7 @@ sudo -u casper casper-client put-deploy \
     --gas-price=1 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
     --session-arg=amount:"u512='900000000000'" \
-    --session-arg=delegation_rate:"u8='10'"
+    --session-arg=delegation_rate:"u8='1'"
 ```
 
 #### Argument Explanation
