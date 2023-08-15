@@ -5,5 +5,5 @@
 > installed.
 
 ```
-git checkout release-1.4.8
+git checkout release-1.5.2
 ```
