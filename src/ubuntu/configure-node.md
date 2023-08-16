@@ -18,7 +18,7 @@ sudo ./firewall.sh
 ### Stage all protocol upgrades
 
 ```
-sudo -u casper /etc/casper/node_util.py stage_protocols $CASPER_NETWORK.conf
+sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
 ```
 
 The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
