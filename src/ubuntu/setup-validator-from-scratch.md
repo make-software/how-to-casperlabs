@@ -3,7 +3,7 @@
 ### Update package repositories
 
 ```
-sudo apt-get update
+sudo apt update
 ```
 
 ### Install pre-requisites

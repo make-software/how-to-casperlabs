@@ -27,7 +27,7 @@ In your firewall set-up, make sure you expose the following ports to public and 
 ### Update package repositories
 
 ```
-sudo apt-get update
+sudo apt update
 ```
 
 ### Install pre-requisites
