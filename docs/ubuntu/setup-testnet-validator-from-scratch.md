@@ -224,14 +224,6 @@ Please note that it is expected to see a lot of connection messages flooding you
 sudo tail -fn100 /var/log/casper/casper-node.log /var/log/casper/casper-node.stderr.log
 ```
 
-#### Check if a known validator sees your node among peers
-
-```
-curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .peers
-```
-
-You should see your IP address on the list
-
 #### Check the node status
 
 ```
