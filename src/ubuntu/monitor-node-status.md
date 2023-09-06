@@ -15,7 +15,7 @@ curl -s http://127.0.0.1:8888/status | jq
 ```
 
 #### Monitor the node's sync progres
-You can monitor the node's synchronization progress by using the ```node_util.py``` utility script again:
+You can monitor the node's synchronization progress by using the ```node_util.py``` utility script:
 
 ```
 /etc/casper/node_util.py watch
