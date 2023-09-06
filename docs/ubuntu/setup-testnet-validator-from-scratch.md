@@ -167,7 +167,7 @@ Install [Casper Wallet](https://www.casperwallet.io), and import your `secret_ke
 
 ### Fund account
 
-Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://docs.cspr.community/docs/user-guides/Connect-a-Wallet.html) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
+Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://www.casperwallet.io/user-guide/connecting-to-dapps) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
 
 ## Configure and Run the Node
 
