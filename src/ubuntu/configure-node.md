@@ -23,32 +23,14 @@ sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
 
 The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
 
-### Get known validator IP
-
-Let's get a known validator IP first. We'll use it multiple times later in the process.
-
-```
-KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/1_0_0/config.toml | grep known_addresses)
-KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
-IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
-
-echo $KNOWN_VALIDATOR_IP
-```
-
-After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will contain IP address of a known validator.
-
 ### Set trusted hash
 
-
-> ### Note
-> Setting the `trusted_hash` is only required if you join the network after Genesis has taken place. If you are joining 
-> prior to Genesis, you may skip this step and continue at "Start the node".
-
-Set the `trusted_hash` to the hash value of block `20` on Casper TestNet:
+Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
-# Get trusted_hash into config.toml
-TRUSTED_HASH=d90602860b06b90a76e58bb7963898f2c1fd91c8e5c57f4a5a4ee42f70e1980c
-
-if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
+NODE_ADDR=https://rpc.testnet.casperlabs.io
+PROTOCOL=1_5_2
+sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
+
+The command above will set the trusted hash on the config file of the `1.5.2` protocol version. Please note that the protocol version should be set to the largest available protocol version you see in `ls /etc/casper`.
