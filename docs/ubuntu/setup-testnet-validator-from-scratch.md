@@ -163,7 +163,7 @@ Save your keys to a safe place. The public key hex file is used to identify your
 
 ### Create account
 
-Install the Signer app, and import your `secret_key.pem` file following the steps described under the `New User (Has Secret Keys)` section of the [Signer Guide](https://docs.cspr.community/docs/user-guides/SignerGuide.html).
+Install [Casper Wallet](https://www.casperwallet.io), and import your `secret_key.pem` file following the steps described under the `Import keys into Casper Wallet` section of the [Migrating to Casper Wallet from Signer](https://www.casperwallet.io/user-guide/signer-user-start-here) guide.
 
 ### Fund account
 
