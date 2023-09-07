@@ -9,7 +9,9 @@
 
 
 > ### Note  
-> Do not execute all the commands below as root. `sudo` is included where it is required.
+> Do not execute all the commands below as `root`. `sudo` is included where it is required.
+>
+> Do not create or use the username `casper`. It will be automatically created during the installation, and is meant to be used by the node software as a no-login user.
 > 
 > Expect that setting up a node and bonding it to the network will take about 30 minutes
 
@@ -22,20 +24,12 @@ In your firewall set-up, make sure you expose the following ports to public and 
 - ```9999``` - event stream port
 - ```35000``` - gossip port
 
-## Set network you're going to set up
-
-Set a variable defining the network name you're trying to set up. For example, for Main Net, use `casper`, while for Test Net use `casper-test`
-
-```
-CASPER_NETWORK=casper-test
-```
-
 ## Install software
 
 ### Update package repositories
 
 ```
-sudo apt-get update
+sudo apt update
 ```
 
 ### Install pre-requisites
@@ -73,7 +67,7 @@ sudo rm -rf /var/lib/casper/*
 
 Execute the following in order to add the Casper repository to `apt` in Ubuntu. 
 ```shell
-echo "deb [arch=amd64] https://repo.casperlabs.io/releases" bionic main | sudo tee -a /etc/apt/sources.list.d/casper.list
+echo "deb [arch=amd64] https://repo.casperlabs.io/releases" focal main | sudo tee -a /etc/apt/sources.list.d/casper.list
 curl -O https://repo.casperlabs.io/casper-repo-pubkey.asc
 sudo apt-key add casper-repo-pubkey.asc
 sudo apt update
@@ -135,7 +129,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.4.8
+git checkout release-1.5.2
 ```
 
 #### Build the contracts
@@ -169,11 +163,11 @@ Save your keys to a safe place. The public key hex file is used to identify your
 
 ### Create account
 
-Install the Signer app, and import your `secret_key.pem` file following the steps described under the `New User (Has Secret Keys)` section of the [Signer Guide](https://docs.cspr.community/docs/user-guides/SignerGuide.html).
+Install [Casper Wallet](https://www.casperwallet.io), and import your `secret_key.pem` file following the steps described under the `Import keys into Casper Wallet` section of the [Migrating to Casper Wallet from Signer](https://www.casperwallet.io/user-guide/signer-user-start-here) guide.
 
 ### Fund account
 
-Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://docs.cspr.community/docs/user-guides/Connect-a-Wallet.html) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
+Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://www.casperwallet.io/user-guide/connecting-to-dapps) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
 
 ## Configure and Run the Node
 
@@ -195,40 +189,22 @@ sudo ./firewall.sh
 ### Stage all protocol upgrades
 
 ```
-sudo -u casper /etc/casper/node_util.py stage_protocols $CASPER_NETWORK.conf
+sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
 ```
 
 The above command will download and stage all available node upgrades to your machine so they are prepped when the node is turned on, and will automatically execute the upgrade and the required time.
 
-### Get known validator IP
-
-Let's get a known validator IP first. We'll use it multiple times later in the process.
-
-```
-KNOWN_ADDRESSES=$(sudo -u casper cat /etc/casper/1_0_0/config.toml | grep known_addresses)
-KNOWN_VALIDATOR_IPS=$(grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' <<< "$KNOWN_ADDRESSES")
-IFS=' ' read -r KNOWN_VALIDATOR_IP _REST <<< "$KNOWN_VALIDATOR_IPS"
-
-echo $KNOWN_VALIDATOR_IP
-```
-
-After running the commands above the ```$KNOWN_VALIDATOR_IP``` variable will contain IP address of a known validator.
-
 ### Set trusted hash
 
-
-> ### Note
-> Setting the `trusted_hash` is only required if you join the network after Genesis has taken place. If you are joining 
-> prior to Genesis, you may skip this step and continue at "Start the node".
-
-Set the `trusted_hash` to the hash value of block `20` on Casper TestNet:
+Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
-# Get trusted_hash into config.toml
-TRUSTED_HASH=d90602860b06b90a76e58bb7963898f2c1fd91c8e5c57f4a5a4ee42f70e1980c
-
-if [ "$TRUSTED_HASH" != "null" ]; then sudo -u casper sed -i "/trusted_hash =/c\trusted_hash = '$TRUSTED_HASH'" /etc/casper/1_0_0/config.toml; fi
+NODE_ADDR=https://rpc.testnet.casperlabs.io
+PROTOCOL=1_5_2
+sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
+
+The command above will set the trusted hash on the config file of the `1.5.2` protocol version. Please note that the protocol version should be set to the largest available protocol version you see in `ls /etc/casper`.
 
 ### Start the node
 
@@ -248,14 +224,6 @@ Please note that it is expected to see a lot of connection messages flooding you
 sudo tail -fn100 /var/log/casper/casper-node.log /var/log/casper/casper-node.stderr.log
 ```
 
-#### Check if a known validator sees your node among peers
-
-```
-curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .peers
-```
-
-You should see your IP address on the list
-
 #### Check the node status
 
 ```
@@ -263,7 +231,7 @@ curl -s http://127.0.0.1:8888/status | jq
 ```
 
 #### Monitor the node's sync progres
-You can monitor the node's synchronization progress by using the ```node_util.py``` utility script again:
+You can monitor the node's synchronization progress by using the ```node_util.py``` utility script:
 
 ```
 /etc/casper/node_util.py watch

@@ -6,8 +6,6 @@
 
 [include open-ports.md]
 
-[include set-testnet-network-env-vars.md]
-
 [include setup-validator-from-scratch.md]
 
 [include checkout-release-branch-testnet.md]

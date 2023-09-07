@@ -8,14 +8,6 @@ Please note that it is expected to see a lot of connection messages flooding you
 sudo tail -fn100 /var/log/casper/casper-node.log /var/log/casper/casper-node.stderr.log
 ```
 
-#### Check if a known validator sees your node among peers
-
-```
-curl -s http://$KNOWN_VALIDATOR_IP:8888/status | jq .peers
-```
-
-You should see your IP address on the list
-
 #### Check the node status
 
 ```
@@ -23,7 +15,7 @@ curl -s http://127.0.0.1:8888/status | jq
 ```
 
 #### Monitor the node's sync progres
-You can monitor the node's synchronization progress by using the ```node_util.py``` utility script again:
+You can monitor the node's synchronization progress by using the ```node_util.py``` utility script:
 
 ```
 /etc/casper/node_util.py watch
