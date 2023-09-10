@@ -291,24 +291,28 @@ You can monitor the node's synchronization progress by using the ```node_util.py
 
 When you run the watch command, expect to see something like this:
 ```
-Last Block: 630151 (Era: 4153)
-Peer Count: 297
-Uptime: 4days 6h 40m 18s 553ms
-Build: 1.4.5-a7f6a648d-casper-mainnet
-Key: 0147b4cae09d64ab6acd02dd0868722be9a9bcc355c2fdff7c2c244cbfcd30f158
+Every 5.0s: /etc/casper/node_util.py node_status ; /etc/casper/node_util.py systemd_status
+
+Last Block: 2035316 (Era: 10565)
+Peer Count: 214
+Uptime: 1day 20h 31m 7s 504ms
+Build: 1.5.2-86b7013
+Key: 0173a3611a3730d6d1a71e91c15a046b3278f6ae9291df6963067958d87035e1fc
 Next Upgrade: None
 
-RPC: Ready
+Reactor State: Validate
+Available Block Range - Low: 2028872  High: 2035316
 
 ● casper-node-launcher.service - Casper Node Launcher
-   Loaded: loaded (/lib/systemd/system/casper-node-launcher.service; enabled; vendor preset: enabled)
-   Active: active (running) since Wed 2022-03-16 21:08:50 UTC; 4 days ago
-     Docs: https://docs.casperlabs.io
- Main PID: 2934 (casper-node-lau)
-    Tasks: 12 (limit: 4915)
-   CGroup: /system.slice/casper-node-launcher.service
-           ├─ 2934 /usr/bin/casper-node-launcher
-           └─16842 /var/lib/casper/bin/1_4_5/casper-node validator /etc/casper/1_4_5/config.toml
+     Loaded: loaded (/lib/systemd/system/casper-node-launcher.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2023-09-08 22:15:57 UTC; 1 day 20h ago
+       Docs: https://docs.casperlabs.io
+   Main PID: 2775 (casper-node-lau)
+      Tasks: 11 (limit: 38291)
+     Memory: 29.3G
+     CGroup: /system.slice/casper-node-launcher.service
+             ├─2775 /usr/bin/casper-node-launcher
+             └─2789 /var/lib/casper/bin/1_5_2/casper-node validator /etc/casper/1_5_2/config.toml
 ```
 
 If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
