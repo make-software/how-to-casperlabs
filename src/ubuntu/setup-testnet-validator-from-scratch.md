@@ -6,6 +6,8 @@
 
 [include open-ports.md]
 
+[include open-files-limit.md]
+
 [include setup-validator-from-scratch.md]
 
 [include checkout-release-branch-testnet.md]
