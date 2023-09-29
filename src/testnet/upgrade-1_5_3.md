@@ -21,8 +21,7 @@ The process to upgrade your node is very straightforward. Log in to your node, a
 one by one:
 
 ```shell
-sudo -u casper /etc/casper/pull_casper_node_version.sh casper-test.conf 1_5_3
-sudo -u casper /etc/casper/config_from_example.sh 1_5_3
+sudo -u casper /etc/casper/node_util.py stage_protocols casper-test.conf
 ```
 
 ## Verifying Successful Staging
