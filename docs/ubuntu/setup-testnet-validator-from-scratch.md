@@ -154,7 +154,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.5.2
+git checkout release-1.5.3
 ```
 
 #### Build the contracts
@@ -225,7 +225,7 @@ Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
 NODE_ADDR=https://rpc.testnet.casperlabs.io
-PROTOCOL=1_5_2
+PROTOCOL=1_5_3
 sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
 
