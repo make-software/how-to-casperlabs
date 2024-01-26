@@ -46,6 +46,7 @@ files=(
     src/testnet/upgrade-1_5_2.md
     src/testnet/upgrade-1_5_3.md
     src/testnet/upgrade-1_5_5.md
+    src/testnet/upgrade-1_5_6.md
     src/user-guides/SignerGuide.md
     src/user-guides/Connect-a-Wallet.md
     src/user-guides/Transfer-CSPR.md
