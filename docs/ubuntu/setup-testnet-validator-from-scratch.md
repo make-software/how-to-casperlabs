@@ -309,7 +309,7 @@ While Monitoring the node’s synchronization progress using the node_util.py ut
 ```
 /etc/casper/node_util.py watch
 ```
-Make sure the Node is in KeepUp and has synced enough blocks for the current TTL (18 hours / 16.384 = 3955 blocks) before continuing with the next steps.
+Make sure the Node is in KeepUp and has synced enough blocks for the current TTL (2 hours / 16.384 = 450 blocks) before continuing with the next steps.
 
 ## Bond to the network
 
