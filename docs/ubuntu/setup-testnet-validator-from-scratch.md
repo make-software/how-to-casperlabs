@@ -273,7 +273,7 @@ Build: 1.5.2-86b7013
 Key: 0173a3611a3730d6d1a71e91c15a046b3278f6ae9291df6963067958d87035e1fc
 Next Upgrade: None
 
-Reactor State: Validate
+Reactor State: KeepUp
 Available Block Range - Low: 2028872  High: 2035316
 
 ● casper-node-launcher.service - Casper Node Launcher
@@ -287,6 +287,8 @@ Available Block Range - Low: 2028872  High: 2035316
              ├─2775 /usr/bin/casper-node-launcher
              └─2789 /var/lib/casper/bin/1_5_2/casper-node validator /etc/casper/1_5_2/config.toml
 ```
+
+If your Reactor State is in "CatchUp" you will need to wait for the node to gather more blocks before it will become "KeepUp" and subsequently show an "Available Block Range". 
 
 If your casper-node-launcher status is not active (running) with increasing time, you are either not running or restarting.
 
@@ -302,6 +304,12 @@ RPC and REST servers have started:
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started JSON-RPC server","address":"0.0.0.0:7777"},"target":"casper_node::components::rpc_server::http_server"}
 {"timestamp":"Feb 09 02:28:35.578","level":"INFO","fields":{"message":"started REST server","address":"0.0.0.0:8888"},"target":"casper_node::components::rest_server::http_server"}
 ```
+
+While Monitoring the node’s synchronization progress using the node_util.py utility script:
+```
+/etc/casper/node_util.py watch
+```
+Make sure the Node is in KeepUp and has synced enough blocks for the current TTL (2 hours / 16.384 = 450 blocks) before continuing with the next steps.
 
 ## Bond to the network
 
