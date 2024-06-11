@@ -3,11 +3,11 @@
 ## For Users
 
 This documentation aims to help with onboarding the new end users of the Casper Network by providing guides on basic setup and operations.
-  - <img src="assets/CasperNetwork/casper-signer-logo.jpg" alt="Casper Signer" width="20" style="vertical-align:middle"/> [Create/Import an Account using Signer](/docs/user-guides/SignerGuide.md)
-  - 👛 [Connect a Wallet](/docs/user-guides/Connect-a-Wallet.md)
-  - 💸 [Transfer CSPR](/docs/user-guides/Transfer-CSPR.md)
-  - 🥩 [Delegating CSPR Stake](/docs/user-guides/Delegating-CSPR-Stake.md)
-  - 🥙 [Undelegating CSPR Stake](/docs/user-guides/Undelegating-CSPR-Stake.md)
+  - <img src="assets/CasperNetwork/casper-signer-logo.jpg" alt="Casper Signer" width="20" style="vertical-align:middle"/> [Migrating to Casper Wallet from Signer](https://www.casperwallet.io/user-guide/signer-user-start-here)
+  - 👛 [Connecting to Dapps](https://www.casperwallet.io/user-guide/connecting-to-dapps)
+  - 💸 [Transfer CSPR](https://www.casperwallet.io/user-guide/transfer-cspr-between-accounts)
+  - 🥩 [Delegating CSPR Stake](https://www.casperwallet.io/user-guide/delegating-and-undelegating-cspr)
+  - 🥙 [Undelegating CSPR Stake](https://www.casperwallet.io/user-guide/delegating-and-undelegating-cspr)
 
   - ❓ [User FAQ](/docs/faq-user.md)
 
