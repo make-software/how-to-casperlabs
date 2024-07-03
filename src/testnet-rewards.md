@@ -1,13 +1,13 @@
-# DEVxDAO Casper Testnet Rewards
+# Casper Testnet Rewards
 
 ## Introduction
 
-Thank you for participating in the DEVxDAO's Casper Testnet program. Your voluntary participation in this Testnet is enabling 
+Thank you for participating in the Casper Testnet program. Your voluntary participation in this Testnet is enabling 
 stakeholders across the Casper eco-system, including core node developers, validators, dApp developers and tool developers,
 to test their software in a non-production environment, and to preview upcoming software changes. 
-As announced at the onset of the Testnet program, the DEVxDAO is planning to award grants to Testnet participants, contingent
+As announced at the onset of the Testnet program, it is planned to award rewards to Testnet participants, contingent
 upon their adherence to the [Code of Conduct](testnet.md), based on an algorithmically calculated score that incorporates
-certain performance criteria (see below), and subject to certain limits and final DEVxDAO approval through its governance process.
+certain performance criteria (see below), and subject to certain limits and final approval.
 
 ## Reward Calculation
 
@@ -20,8 +20,8 @@ certain performance criteria (see below), and subject to certain limits and fina
     * `n` is subject to a future vote of the DEVxDAO
     * the ranking each week is calculated as explained below 
     * all participants tied for the last reward-eligible position will be awarded
-* Rewards are accrued and paid at a later date, subject to Casper token lock-up periods and DEVxDAO governance and grant specifics
-* The total reward amount available to the program is subject to a DEVxDAO vote, per its governance rules
+* Rewards are accrued and paid at a later date, subject to Casper token lock-up periods and Casper Association's workflow and grant specifics
+* The total reward amount available to the program is subject to a change as needed with a prior announcement
 * Reward participation is contingent upon completing a KYC/AML process, details for which will be announced at a later date.
 * One KYC'd person can only be tied to one node, for reward purposes.
 
@@ -32,9 +32,15 @@ The basic scoring algorithm is:
 ```shell
 100 * uptime_percentage
 ```
-where `uptime_percentage` is defined as your node running within 1 block from the "tip" of the blockchain. Your node is regularly scanned
+where `uptime_percentage` is defined as your node running within 4 blocks from the "tip" of the blockchain. Your node is regularly scanned
 on port `8888` to check your block height, so if your port `8888` is closed, you are automatically not considered "up". `uptime_percentage`
 is calculated on a 24-hour basis, during each UTC day. 
+
+#### Longevity Score
+
+The he longevity score is the cumulative daily score of a node since the last fault. Any day with a score below 90 is considered a fault.
+
+Network longevity at 100% will be used as a factor to break ties (longer longevity=higher ranking among tied performance metrics) and where a tie causes the rewardee list to exceed 100 rewardees, the list will either be shortened to exclude all tied rewardees, or extended up to 110 rewardees, whichever results in fewer rewardee additions/removals.
 
 #### Deductions
 
@@ -42,8 +48,12 @@ Your cumulative weekly score can be reduced if any of the following events occur
 
 ##### Network Weight
 
-If your node at any time during the weekly calculation period has a network weight of 3% or more, your score for that 
-week will be reduced by 10%
+If your node at any time during the weekly calculation period has a network weight of 6% or more, your score for that 
+week will be reduced by 10%.
+
+#### Validator Bid
+
+If your node does not have an active bid on the network, it will be considered down, and will not be eligible for rewards. If you follow the installation instructions completely, you will have an active bid. Please see the [Validator FAQ](https://docs.cspr.community/docs/faq-validator.html) for more details on how to monitor your node's bid status, and how to reactivate your bid if it gets deactivated.
 
 ##### Node Software Version
 
