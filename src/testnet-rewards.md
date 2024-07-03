@@ -38,7 +38,7 @@ is calculated on a 24-hour basis, during each UTC day.
 
 #### Longevity Score
 
-The he longevity score is the cumulative daily score of a node since the last fault. Any day with a score below 90 is considered a fault.
+The longevity score is the cumulative daily score of a node since the last fault. Any day with a score below 90 is considered a fault.
 
 Network longevity at 100% will be used as a factor to break ties (longer longevity=higher ranking among tied performance metrics) and where a tie causes the rewardee list to exceed 100 rewardees, the list will either be shortened to exclude all tied rewardees, or extended up to 110 rewardees, whichever results in fewer rewardee additions/removals.
 

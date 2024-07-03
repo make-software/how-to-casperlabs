@@ -38,7 +38,7 @@ is calculated on a 24-hour basis, during each UTC day.
 
 #### Longevity Score
 
-The he longevity score is the cumulative daily score of a node since the last fault. Any day with a score below 90 is considered a fault.
+The longevity score is the cumulative daily score of a node since the last fault. Any day with a score below 90 is considered a fault.
 
 Network longevity at 100% will be used as a factor to break ties (longer longevity=higher ranking among tied performance metrics) and where a tie causes the rewardee list to exceed 100 rewardees, the list will either be shortened to exclude all tied rewardees, or extended up to 110 rewardees, whichever results in fewer rewardee additions/removals.
 
@@ -62,9 +62,8 @@ upgrade is slated to take effect, your score for that week will be reduced by 10
 slated for `era 234` and your node is still not upgraded at the beginning of `era 235`, you will lose 10% of your score.
 
 
-_Please note that the DEVxDAO's Casper Testnet program is implemented by the [DEVxDAO](https://devxdao.com) by providing rewards 
-through the [Emerging Technology Association](https://www.emergingte.ch) (ETA), a Swiss nonprofit association which supports open source 
-and transparent scientific research of emerging technologies for community building. 
-Any rewards will be granted and calculated by the ETA. MAKE Technology LLC is not affiliated
-with the DEVxDAO, the ETA nor the Casper Foundation, and has no control over the program sponsorship or the incentivized
-reward program, and is hosting these guides and documents as a service to the DEVxDAO and the Casper community only._
+_Please note that the Casper Testnet program is implemented by providing rewards
+through the [Casper Association](https://casper.network) (CA), a not-for-profit, Switzerland-domiciled organization
+responsible for overseeing the Casper network and supporting its organic evolution and continued decentralization.
+MAKE Technology LLC is not affiliated with the Casper Association, and has no control over the program sponsorship or the incentivized
+reward program, and is hosting these guides and documents as a service to the Casper community only._
