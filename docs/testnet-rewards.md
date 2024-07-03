@@ -17,7 +17,7 @@ certain performance criteria (see below), and subject to certain limits and fina
   Monday April 12th, 2021.
 * Weeks begin on Monday at 0:00:00 UTC, and end on Sunday at 23:59:59 UTC.
 * Rewards are awarded to the top-ranked `n` of Testnet participants in a given week:
-    * `n` is subject to a future vote of the DEVxDAO
+    * `n` is subject to a future decision
     * the ranking each week is calculated as explained below 
     * all participants tied for the last reward-eligible position will be awarded
 * Rewards are accrued and paid at a later date, subject to Casper token lock-up periods and Casper Association's workflow and grant specifics
