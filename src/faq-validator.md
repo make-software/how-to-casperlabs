@@ -51,10 +51,10 @@ Yes. You may follow these steps:
 
   `sudo -u casper casper-client put-deploy --secret-key /etc/casper/validator_keys/secret_key.pem --chain-name "$CHAIN_NAME" --session-path ~/casper-node/target/wasm32-unknown-unknown/release/activate_bid.wasm --payment-amount 300000000 --session-arg "validator_public_key:public_key='$(cat /etc/casper/validator_keys/public_key_hex)'"`
 
-## Is this an incentivised test net? If so, what are the rules for the reward calculation?
+## Is this an incentivised Testnet? If so, what are the rules for the reward calculation?
 All information about the reward program is here: [https://docs.cspr.community/docs/testnet-rewards.html](https://docs.cspr.community/docs/testnet-rewards.html)
 
-## Where is the faucet to get test net tokens?
+## Where is the faucet to get Testnet tokens?
 [https://testnet.cspr.live/tools/faucet](https://testnet.cspr.live/tools/faucet)
 
 ## I see that some nodes have much more tokens bonded/delegated than what I have on my node. Does it mean they will get more rewards?
@@ -65,5 +65,3 @@ No. Number of tokens on your node or being in top-100 based on the number of tok
 * Now go to this address: `https://testnet.cspr.live/validator/PUBLIC-HASH-OF-YOUR-NODE`
 * Make sure that you see the `ACTIVE` (green) label on your node’s page on testnet.cspr.live, and the `LATEST BLOCK HEIGHT` value at the top of the page is the same as the height value from your node’s status output (you took note of that at the first step). (+-3 difference between these values is okay.)
 
-## I've followed the instructions to install my node, but I'm seeing a lot of warnings on the logs about dropping connections and network mismatch. Is that expected?
-Yes. Don't worry about them. When a node from the mainnet tries to connect to another node on the testnet -or the other way around-, the connection gets dropped, causing such warning messages.
