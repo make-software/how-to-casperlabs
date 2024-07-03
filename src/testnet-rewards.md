@@ -51,7 +51,7 @@ Your cumulative weekly score can be reduced if any of the following events occur
 If your node at any time during the weekly calculation period has a network weight of 6% or more, your score for that 
 week will be reduced by 10%.
 
-#### Validator Bid
+##### Validator Bid
 
 If your node does not have an active bid on the network, it will be considered down, and will not be eligible for rewards. If you follow the installation instructions completely, you will have an active bid. Please see the [Validator FAQ](https://docs.cspr.community/docs/faq-validator.html) for more details on how to monitor your node's bid status, and how to reactivate your bid if it gets deactivated.
 
