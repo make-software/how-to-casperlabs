@@ -388,7 +388,7 @@ sudo -u casper casper-client put-deploy \
   
 Remember the ```deploy_hash``` returned in the response to query its status later.
 
-### Check that you bonding request worked
+### Check that your bonding request worked
 
 Sending a transaction to the network does not mean that the transaction processed successfully. It’s important to check to see that the contract executed properly:
 
