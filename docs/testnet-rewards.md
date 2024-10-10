@@ -1,3 +1,6 @@
+
+**⚠️ NOTICE: The previous Testnet Rewards Program has officially ended as of September 30, 2024. For details on the upcoming phase of the Testnet Program, please visit the [Casper Network forum](https://forum.casper.network/).**
+
 # Casper Testnet Rewards
 
 ## Introduction

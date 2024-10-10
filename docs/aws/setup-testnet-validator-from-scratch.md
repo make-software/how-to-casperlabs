@@ -181,7 +181,7 @@ cd casper-node/
 > installed.
 
 ```
-git checkout release-1.5.2
+git checkout release-1.5.8
 ```
 
 #### Build the contracts
@@ -220,6 +220,8 @@ Install [Casper Wallet](https://www.casperwallet.io), and import your `secret_ke
 ### Fund account
 
 Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://www.casperwallet.io/user-guide/connecting-to-dapps) with the account you want to fund. Click `Tools` from the top navigation menu, then click `Faucet`. Wait for the faucet page to load, and click the `Request tokens` button. Wait until the request transaction succeeds.
+
+> **Note:** If you need more Testnet tokens than provided by the faucet, you can make a request by sending an email to `casper-testnet@make.services` explaining the details of your need.
 
 ## Configure and Run the Node
 
@@ -373,19 +375,20 @@ sudo -u casper casper-client put-deploy \
     --node-address "http://127.0.0.1:7777/" \
     --secret-key "/etc/casper/validator_keys/secret_key.pem" \
     --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
-    --payment-amount 3000000000 \
+    --payment-amount 3500000000000 \
     --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
-    --session-arg=amount:"u512='900000000000'" \
+    --session-arg=amount:"u512='10000000000000'" \
     --session-arg=delegation_rate:"u8='1'"
 ```
 
 #### Argument Explanation
-- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. Recommended bid in amount is 90% of your faucet balance.  This is ```900 CSPR```  or ```900000000000 motes``` as an argument to the ```add_bid``` contract deploy.
+- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. The minimum bid amount is ```10000 CSPR```  or ```10000000000000 motes``` as an argument to the ```add_bid``` contract deploy.
 - ```delegation_rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
+- ```payment-amount``` - The fee in motes (1 CSPR = 10^9 motes) to cover the contract execution cost. It's ```3500 CSPR```  or ```3500000000000 motes``` on the command above.
   
 Remember the ```deploy_hash``` returned in the response to query its status later.
 
-### Check that you bonding request worked
+### Check that your bonding request worked
 
 Sending a transaction to the network does not mean that the transaction processed successfully. It’s important to check to see that the contract executed properly:
 

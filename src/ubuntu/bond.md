@@ -16,7 +16,7 @@ Check your balance to ensure you have funds to bond:
 
 [include casper-client/bond.md]
 
-### Check that you bonding request worked
+### Check that your bonding request worked
 
 [include casper-client/check-transaction-status.md]
 
