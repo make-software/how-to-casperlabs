@@ -2,14 +2,20 @@
 
 Execute the following in order to add the Casper repository to `apt` in Ubuntu. 
 ```shell
-echo "deb [arch=amd64] https://repo.casperlabs.io/releases" focal main | sudo tee -a /etc/apt/sources.list.d/casper.list
-curl -O https://repo.casperlabs.io/casper-repo-pubkey.asc
-sudo apt-key add casper-repo-pubkey.asc
+sudo mkdir -m 0755 -p /etc/apt/keyrings/
+sudo curl https://repo.casper.network/casper-repo-pubkey.gpg --output /etc/apt/keyrings/casper-repo-pubkey.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/casper-repo-pubkey.gpg] https://repo.casper.network/releases focal main" | sudo tee -a /etc/apt/sources.list.d/casper.list
 sudo apt update
 ```
 
 #### Install the Casper node software
 
+If the current Casper network version is below 2.0:
 ```
-sudo apt install -y casper-client casper-node-launcher
+sudo apt install -y casper-node-launcher casper-client=2.0.0-0+focal
+```
+
+If the current Casper network version is equal to or above 2.0:
+```
+sudo apt install -y casper-node-launcher casper-client
 ```

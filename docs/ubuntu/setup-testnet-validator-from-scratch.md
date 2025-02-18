@@ -93,16 +93,22 @@ sudo rm -rf /var/lib/casper
 
 Execute the following in order to add the Casper repository to `apt` in Ubuntu. 
 ```shell
-echo "deb [arch=amd64] https://repo.casperlabs.io/releases" focal main | sudo tee -a /etc/apt/sources.list.d/casper.list
-curl -O https://repo.casperlabs.io/casper-repo-pubkey.asc
-sudo apt-key add casper-repo-pubkey.asc
+sudo mkdir -m 0755 -p /etc/apt/keyrings/
+sudo curl https://repo.casper.network/casper-repo-pubkey.gpg --output /etc/apt/keyrings/casper-repo-pubkey.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/casper-repo-pubkey.gpg] https://repo.casper.network/releases focal main" | sudo tee -a /etc/apt/sources.list.d/casper.list
 sudo apt update
 ```
 
 #### Install the Casper node software
 
+If the current Casper network version is below 2.0:
 ```
-sudo apt install -y casper-client casper-node-launcher
+sudo apt install -y casper-node-launcher casper-client=2.0.0-0+focal
+```
+
+If the current Casper network version is equal to or above 2.0:
+```
+sudo apt install -y casper-node-launcher casper-client
 ```
 
 ## Build smart contracts that are required to bond to the network 
@@ -226,7 +232,7 @@ The above command will download and stage all available node upgrades to your ma
 Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
-NODE_ADDR=https://rpc.testnet.casperlabs.io
+NODE_ADDR=https://node.mainnet.casper.network/rpc
 PROTOCOL=1_5_8
 sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
