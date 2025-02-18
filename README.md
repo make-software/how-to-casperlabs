@@ -15,18 +15,17 @@ This documentation aims to help with onboarding the new end users of the Casper 
 
 This documentation is aimed to help prospective node-operators set up and configure their Casper Network validator nodes.
 
-### Mainnet Guides
-  - [Set up Mainnet validator node](https://github.com/casper-network/casper-node/wiki/Mainnet-Node-Installation-Instructions)
+### MainNet Guides
+  - [Set up MainNet validator node](https://github.com/casper-network/casper-node/wiki/Mainnet-Node-Installation-Instructions)
 
-### Testnet Guides
-  - [Set up Testnet validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
-  - [Set up Testnet validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
-  - [Restore full Testnet node DB from daily snapshots](/docs/ubuntu/restore-full-testnet-db.md)  
+### TestNet Guides
+  - [Set up TestNet validator node from scratch on AWS](/docs/aws/setup-testnet-validator-from-scratch.md)
+  - [Set up TestNet validator node from scratch on Ubuntu](/docs/ubuntu/setup-testnet-validator-from-scratch.md)
 
-### Testnet Information
-  - [Testnet Code of Conduct and Incentive Requirements](/docs/testnet.md)
-  - [Testnet Rewards](/docs/testnet-rewards.md)
-  - [Testnet Upgrades](/docs/testnet/testnet-upgrades.md)
+### TestNet Information
+  - [TestNet Code of Conduct and Incentive Requirements](/docs/testnet.md)
+  - [TestNet Rewards](/docs/testnet-rewards.md)
+  - [TestNet Upgrades](/docs/testnet/testnet-upgrades.md)
 
 ### Miscellaneous
 - [Validator FAQ](/docs/faq-validator.md)

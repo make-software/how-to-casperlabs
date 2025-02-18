@@ -20,7 +20,6 @@ rm -rf docs/*
 files=(
     src/aws/setup-testnet-validator-from-scratch.md
     src/ubuntu/setup-testnet-validator-from-scratch.md
-    src/ubuntu/restore-full-testnet-db.md
     src/faq-user.md
     src/faq-validator.md
     src/testnet.md
