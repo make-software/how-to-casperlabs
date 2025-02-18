@@ -28,7 +28,7 @@ The above command will download and stage all available node upgrades to your ma
 Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
-NODE_ADDR=https://rpc.testnet.casperlabs.io
+NODE_ADDR=https://node.mainnet.casper.network/rpc
 PROTOCOL=1_5_8
 sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
