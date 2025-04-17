@@ -101,73 +101,8 @@ sudo apt update
 
 #### Install the Casper node software
 
-If the current Casper network version is below 2.0:
 ```
-sudo apt install -y casper-node-launcher casper-client=2.0.0-0+focal
-```
-
-If the current Casper network version is equal to or above 2.0:
-```
-sudo apt install -y casper-node-launcher casper-client
-```
-
-## Build smart contracts that are required to bond to the network 
-
-### Install pre-requisites for building smart contracts
-
-```
-cd ~
-sudo apt purge --auto-remove cmake
-wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
-sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
-sudo apt update
-sudo apt install cmake -y
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-sudo apt install libssl-dev -y
-sudo apt install pkg-config -y
-sudo apt install build-essential -y
-
-BRANCH="1.0.20" \
-    && git clone --branch ${BRANCH} https://github.com/WebAssembly/wabt.git "wabt-${BRANCH}" \
-    && cd "wabt-${BRANCH}" \
-    && git submodule update --init \
-    && cd - \
-    && cmake -S "wabt-${BRANCH}" -B "wabt-${BRANCH}/build" \
-    && cmake --build "wabt-${BRANCH}/build" --parallel 8 \
-    && sudo cmake --install "wabt-${BRANCH}/build" --prefix /usr --strip -v \
-    && rm -rf "wabt-${BRANCH}"
-```
-
-### Build smart contracts
-
-#### Pull sources
-
-Go to your home directory and clone the node repository. Later we will use this path to the smart contracts in our bonding request.
-
-```
-cd ~
-
-git clone https://github.com/casper-network/casper-node.git
-cd casper-node/
-```
-
-#### Checkout the release branch
-
-> **Note**  
-> Verify that the version of your contracts matches the version of the casper-node software you have
-> installed.
-
-```
-git checkout release-1.5.8
-```
-
-#### Build the contracts
-
-```
-make setup-rs
-make build-client-contracts -j
+sudo apt install -y casper-node-launcher casper-client casper-sidecar
 ```
 
 ## Generate keys and fund your account 
@@ -208,7 +143,7 @@ Go to [Testnet CSPR.Live](https://testnet.cspr.live/), and [connect](https://www
 In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
 
 ```
-cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+cd ~; curl -JLO https://genesis.casper.network/firewall_only_node_to_node.sh
 chmod +x ./firewall.sh
 
 # Look at this and make sure you understand what it does and want to run it on your server.
@@ -233,11 +168,11 @@ Set the `trusted_hash` to the hash value of the latest block on Casper TestNet:
 
 ```
 NODE_ADDR=https://node.testnet.casper.network/rpc
-PROTOCOL=1_5_8
-sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
+PROTOCOL=2_0_1
+sudo sed -i "/trusted_hash =/c\trusted_hash = '$(casper-client get-block --node-address $NODE_ADDR | jq -r .result.block_with_signatures.block.Version2.hash | tr -d '\n')'" /etc/casper/$PROTOCOL/config.toml
 ```
 
-The command above will set the trusted hash on the config file of the `1.5.8` protocol version. Please note that the protocol version should be set to the largest available protocol version you see in `ls /etc/casper`.
+The command above will set the trusted hash on the config file of the `2.0.1` protocol version. Please note that the protocol version should be set to the largest available protocol version you see in `ls /etc/casper`.
 
 ### Start the node
 
@@ -346,26 +281,25 @@ If you followed the installation steps from this document you can run the follow
 It substitutes the public key hex value for you and sends recommended argument values:
 
 ```
-PUBLIC_KEY_HEX=$(sudo -u casper cat /etc/casper/validator_keys/public_key_hex)
 CHAIN_NAME=$(curl -s http://127.0.0.1:8888/status | jq -r '.chainspec_name')
 
-sudo -u casper casper-client put-deploy \
-    --chain-name "$CHAIN_NAME" \
-    --node-address "http://127.0.0.1:7777/" \
-    --secret-key "/etc/casper/validator_keys/secret_key.pem" \
-    --session-path "$HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm" \
-    --payment-amount 3500000000000 \
-    --session-arg=public_key:"public_key='$PUBLIC_KEY_HEX'" \
-    --session-arg=amount:"u512='10000000000000'" \
-    --session-arg=delegation_rate:"u8='1'"
+sudo -u casper casper-client put-transaction add-bid \
+  --chain-name "$CHAIN_NAME" \
+  --delegation-rate $(( RANDOM % 11 )) \
+  --public-key $(cat /etc/casper/validator_keys/public_key_hex) \
+  --transaction-amount 10000000000000 \
+  --secret-key /etc/casper/validator_keys/secret_key.pem \
+  --standard-payment true \
+  --payment-amount 2500000000 \
+  --gas-price-tolerance 1
 ```
 
 #### Argument Explanation
-- ```amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. The minimum bid amount is ```10000 CSPR```  or ```10000000000000 motes``` as an argument to the ```add_bid``` contract deploy.
-- ```delegation_rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
-- ```payment-amount``` - The fee in motes (1 CSPR = 10^9 motes) to cover the contract execution cost. It's ```3500 CSPR```  or ```3500000000000 motes``` on the command above.
+- ```transaction-amount``` - This is the amount that is being bid. If the bid wins, this will be the validator’s initial bond amount. The minimum bid amount is ```10000 CSPR```  or ```10000000000000 motes``` as an argument to the ```ad-bid``` transaction. 
+- ```delegation-rate``` - The percentage of rewards that the validator retains from delegators that delegate their tokens to the node. The example above sets a random value between 0 (meaning 0%) and 10 (meaning 10%). 
+- ```payment-amount``` - The fee in motes (1 CSPR = 10^9 motes) to cover the contract execution cost. It's ```2.5 CSPR```  or ```2500000000 motes``` on the command above.
   
-Remember the ```deploy_hash``` returned in the response to query its status later.
+Remember the ```transaction_hash``` returned in the response to query its status later.
 
 ### Check that your bonding request worked
 
