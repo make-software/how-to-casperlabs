@@ -4,7 +4,7 @@
 In order to secure your node somewhat from unauthorized/excessive connections/requests, you can configure the firewall of the node using a template ```ufw``` setup:
 
 ```
-cd ~; curl -JLO https://genesis.casperlabs.io/firewall.sh
+cd ~; curl -JLO https://genesis.casper.network/firewall_only_node_to_node.sh
 chmod +x ./firewall.sh
 
 # Look at this and make sure you understand what it does and want to run it on your server.
