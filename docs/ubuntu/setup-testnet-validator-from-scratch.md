@@ -101,12 +101,6 @@ sudo apt update
 
 #### Install the Casper node software
 
-If the current Casper network version is below 2.0:
-```
-sudo apt install -y casper-node-launcher casper-client=2.0.0-0+focal
-```
-
-If the current Casper network version is equal to or above 2.0:
 ```
 sudo apt install -y casper-node-launcher casper-client
 ```
