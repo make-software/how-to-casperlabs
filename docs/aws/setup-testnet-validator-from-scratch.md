@@ -132,65 +132,6 @@ sudo apt update
 sudo apt install -y casper-node-launcher casper-client casper-sidecar
 ```
 
-## Build smart contracts that are required to bond to the network 
-
-### Install pre-requisites for building smart contracts
-
-```
-cd ~
-sudo apt purge --auto-remove cmake
-wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
-sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
-sudo apt update
-sudo apt install cmake -y
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-sudo apt install libssl-dev -y
-sudo apt install pkg-config -y
-sudo apt install build-essential -y
-
-BRANCH="1.0.20" \
-    && git clone --branch ${BRANCH} https://github.com/WebAssembly/wabt.git "wabt-${BRANCH}" \
-    && cd "wabt-${BRANCH}" \
-    && git submodule update --init \
-    && cd - \
-    && cmake -S "wabt-${BRANCH}" -B "wabt-${BRANCH}/build" \
-    && cmake --build "wabt-${BRANCH}/build" --parallel 8 \
-    && sudo cmake --install "wabt-${BRANCH}/build" --prefix /usr --strip -v \
-    && rm -rf "wabt-${BRANCH}"
-```
-
-### Build smart contracts
-
-#### Pull sources
-
-Go to your home directory and clone the node repository. Later we will use this path to the smart contracts in our bonding request.
-
-```
-cd ~
-
-git clone https://github.com/casper-network/casper-node.git
-cd casper-node/
-```
-
-#### Checkout the release branch
-
-> **Note**  
-> Verify that the version of your contracts matches the version of the casper-node software you have
-> installed.
-
-```
-git checkout release-1.5.8
-```
-
-#### Build the contracts
-
-```
-make setup-rs
-make build-client-contracts -j
-```
-
 ## Generate keys and fund your account 
 
 ### Generate node keys
