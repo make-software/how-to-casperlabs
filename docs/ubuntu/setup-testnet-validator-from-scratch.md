@@ -102,7 +102,7 @@ sudo apt update
 #### Install the Casper node software
 
 ```
-sudo apt install -y casper-node-launcher casper-client
+sudo apt install -y casper-node-launcher casper-client casper-sidecar
 ```
 
 ## Build smart contracts that are required to bond to the network 
