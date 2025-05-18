@@ -31,4 +31,4 @@ This documentation is aimed to help prospective node-operators set up and config
 - [Validator FAQ](/docs/faq-validator.md)
 
 ### Have questions?
-Go to the `#validators-general` channel [on Discord](https://discord.gg/caspernetwork
+Go to the `#validators-general` channel [on Discord](https://discord.gg/caspernetwork)
