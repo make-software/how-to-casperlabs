@@ -20,11 +20,11 @@ While there is a delay before you can access your previously delegated tokens, t
 
 ## Is there slashing? Can I lose my delegated tokens?
 
-Currently, slashing is not enabled on the Casper MainNet. If a validator behaves poorly on the network they may be evicted from the auction and you will not earn rewards during the period that the validator is evicted. When slashing is enabled, tokens will be removed as penalty for poor/malicious behavior in the network. In that case, you will lose tokens delegated to that validator. 
+Currently, slashing is not enabled on the Casper Mainnet. If a validator behaves poorly on the network, they may be evicted from the auction and you will not earn rewards during the period that the validator is evicted. When slashing is enabled, tokens will be removed as penalty for poor/malicious behavior in the network. In that case, you will lose tokens delegated to that validator.
 
 ## What is the cost of delegation and undelegation?
 
-The cost of the delegation process is ~3 CSPR. So make sure you have a bunch of extra CSPR on your account apart from the amount you are delegating. So if you are going to delegate 1000 CSPR, you should have at least 1003 CSPR in your wallet.The cost of the undelegate process is currently ~0.5 CSPR.
+The cost of the delegation process is 2.5 CSPR. So make sure you have a bunch of extra CSPR on your account apart from the amount you are delegating. So if you are going to delegate 1000 CSPR, you should have at least 1002.5 CSPR in your wallet. The cost of the undelegate process is currently also 2.5 CSPR.
 
 ## What is the yearly reward rate for the delegated tokens?
 

@@ -24,7 +24,7 @@ Currently, slashing is not enabled on the Casper Mainnet. If a validator behaves
 
 ## What is the cost of delegation and undelegation?
 
-The cost of the delegation process is ~3 CSPR. So make sure you have a bunch of extra CSPR on your account apart from the amount you are delegating. So if you are going to delegate 1000 CSPR, you should have at least 1003 CSPR in your wallet.The cost of the undelegate process is currently ~0.5 CSPR.
+The cost of the delegation process is 2.5 CSPR. So make sure you have a bunch of extra CSPR on your account apart from the amount you are delegating. So if you are going to delegate 1000 CSPR, you should have at least 1002.5 CSPR in your wallet. The cost of the undelegate process is currently also 2.5 CSPR.
 
 ## What is the yearly reward rate for the delegated tokens?
 
