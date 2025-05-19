@@ -8,7 +8,7 @@ Instead of having to operate and maintain a Casper node (server that stores a co
 
 ## How frequently the staking rewards are paid?
 
-Staking rewards are paid to your account on a per ERA basis. One Era is currently set to 2 hours, and each block is set for 65 seconds. For the first reward to appear after delegation/staking, it may take upto 2 ERAs (~4 hours).
+Staking rewards are paid to your account on a per ERA basis. One Era is currently set to 2 hours, and each block is set for 16 seconds. For the first reward to appear after delegation/staking, it may take up to 2 ERAs (~4 hours).
 
 ## I've delegated my tokens but the rewards don't arrive at my wallet?
 
