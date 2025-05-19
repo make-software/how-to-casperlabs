@@ -4,7 +4,7 @@
 
 Delegation allocates your CSPR tokens to a chosen validator on the network who is participating in the Casper Network's Consensus Protocol. As a proof of stake network, node operators 'stake' their tokens to earn the eligibility to propose new blocks for the network and approve blocks proposed by other validators, but require constant uptime and monitoring of a server connected the Casper Network, instead of 'mining' like other tokens.
 
-Instead of having to operate and maintain a Casper node (server that stores a copy of the blockchain), you can instead delegate your tokens to someone on the network who has indicated they intend to operate a server on the network. These server operators are called Validators, and they keep a certain percentage of rewards generated from your staked tokens, similar to a commission. Validators set their own fee, as well as earn rewards for their own staked tokens. By particitating in the protocol this way, you help to improve decentralization and security of the network, and earn rewards in return.
+Instead of having to operate and maintain a Casper node (server that stores a copy of the blockchain), you can instead delegate your tokens to someone on the network who has indicated they intend to operate a server on the network. These server operators are called Validators, and they keep a certain percentage of rewards generated from your staked tokens, similar to a commission. Validators set their own fee, as well as earn rewards for their own staked tokens. By participating in the protocol this way, you help to improve decentralization and security of the network, and earn rewards in return.
 
 ## How frequently the staking rewards are paid?
 
