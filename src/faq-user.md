@@ -44,8 +44,8 @@ Validators with Delegation rate of 100 are ones that either don't want to or are
 
 ## How can I delegate my tokens?
 
-An easy, web-based staking UI is now available on [CSPR.Live](https://cspr.live). You may follow these steps to delegate your tokens:
+An easy, web-based staking UI is available on [CSPR.Live](https://cspr.live). You may follow these steps to delegate your tokens:
 
-1. [Install Casper Signer](https://docs.cspr.community/docs/user-guides/SignerGuide.html)
-2. Transfer funds to your wallet on the Signer app
-3. [Delegate your CSPR stake](https://docs.cspr.community/docs/user-guides/Delegating-CSPR-Stake.html)
+1. [Install Casper Wallet](https://www.casperwallet.io/download)
+2. Transfer funds to your wallet on the Casper Wallet app
+3. [Delegate your CSPR stake](https://www.casperwallet.io/user-guide/delegating-and-undelegating-cspr)
