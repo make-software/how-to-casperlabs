@@ -32,9 +32,11 @@ The base annual reward rate is 8% of the total supply, resulting in a current AP
 
 ## I see some validators with big stake producing blocks, and some smaller ones not. Does that mean only the bigger ones are getting rewards?
 
-No. On Casper Mainnet, everyone gets seigniorage according to their stake, regardless of whether you've produced blocks or not. The only thing a block proposer gets, is to keep the transaction fees associated with transfers and deploys in the block they proposed. As you may know, transfers cost only 10000 motes (0.00001 CSPR), so these fees are not substantial on a transfer-by-transfer basis.
+No. On Casper Mainnet, everyone gets seigniorage according to their stake, regardless of whether you've produced blocks or not. The only thing a block proposer gets, is to keep the transaction fees associated with transfers and deploys in the block they proposed. As you may know, transfers cost only 100000000 motes (0.1 CSPR), so these fees are not substantial on a transfer-by-transfer basis.
 
 The block proposer is chosen also based on odds relative to stake, so if you have 0.1% of stake on the network, the odds that you'll get chosen as the block proposer are very small. This has nothing to do with seigniorage.
+
+As per the new design of validator rewards on Casper 2.0, some volatility in rewards is expected in the short run. However, all validator rewards should average to an amount proportional to their total stake in the long run.
 
 ## Some top validators have a commission rate of 100%. What does that mean?
 
