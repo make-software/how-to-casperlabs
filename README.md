@@ -30,7 +30,7 @@ This documentation is aimed to help prospective node-operators set up and config
 ### Miscellaneous
 - [Validator FAQ](/docs/faq-validator.md)
 
-## Do you have any questions?
+### Do you have any questions?
 
 -  [Discord Community](https://discord.gg/caspernetwork)
--  [Telegram Channel](https://t.me/casperblockchain) 
+-  [Telegram Community](https://t.me/casperblockchain) 
