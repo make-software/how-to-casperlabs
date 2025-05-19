@@ -28,7 +28,7 @@ The cost of the delegation process is 2.5 CSPR. So make sure you have a bunch of
 
 ## What is the yearly reward rate for the delegated tokens?
 
-The base annual reward rate is 8% of the total supply, resulting in a current APY of approximately 20% on the MainNet (because only a portion of the total supply is currently staked and participating in the reward distribution). The APY is likely to decrease over time as more tokens get staked on the network.
+The base annual reward rate is 8% of the total supply, resulting in a current APY of approximately 15% on the Mainnet (because only a portion of the total supply is currently staked and participating in the reward distribution). The APY might decrease over time as more tokens get staked on the network.
 
 ## I see some validators with big stake producing blocks, and some smaller ones not. Does that mean only the bigger ones are getting rewards?
 
