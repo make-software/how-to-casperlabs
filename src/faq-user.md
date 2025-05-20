@@ -20,7 +20,7 @@ While there is a delay before you can access your previously delegated tokens, t
 
 ## Is there slashing? Can I lose my delegated tokens?
 
-Currently, slashing is not enabled on the Casper Mainnet. If a validator behaves poorly on the network, they may be evicted from the auction and you will not earn rewards during the period that the validator is evicted. When slashing is enabled, tokens will be removed as penalty for poor/malicious behavior in the network. In that case, you will lose tokens delegated to that validator.
+Currently, slashing is not enabled on the Casper Mainnet, and there are no plans to enable it in the near future. If a validator behaves poorly on the network, they may be evicted from the auction, and you will not earn rewards during the period that the validator is evicted. If slashing is ever enabled in the future—which would require approval through a governance vote—tokens could be removed as a penalty for poor or malicious behavior on the network. In that case, you could lose tokens delegated to that validator.
 
 ## What is the cost of delegation and undelegation?
 
