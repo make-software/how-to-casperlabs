@@ -222,7 +222,7 @@ Available Block Range - Low: 2028872  High: 2035316
 ● casper-node-launcher.service - Casper Node Launcher
      Loaded: loaded (/lib/systemd/system/casper-node-launcher.service; enabled; vendor preset: enabled)
      Active: active (running) since Fri 2023-09-08 22:15:57 UTC; 1 day 20h ago
-       Docs: https://docs.casperlabs.io
+       Docs: https://docs.casper.network
    Main PID: 2775 (casper-node-lau)
       Tasks: 11 (limit: 38291)
      Memory: 29.3G

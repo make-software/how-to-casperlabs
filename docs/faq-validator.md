@@ -32,9 +32,9 @@ Replace ```<DEPLOY_HASH>``` with the deploy hash of the transaction you want to 
 
 ## How do I estimate execution cost?
 
-The ```chainspec.toml``` file contains costs for every function call or operation, as well as memory and space usage. However, it is rather complicated to estimate the cost that way. 
+The ```chainspec.toml``` file lists operation costs, but manual estimation is complex.
 
-Right now, estimation would be done by exercising contracts against the Testnet. Casperlabs team intends to do this exercise for all the important contracts they provide. The results will end up as an addendum to online documentation.
+A better approach is to test contracts on the Testnet or use the [speculative execution endpoint](https://docs.casper.network/developers/dapps/speculative-exec), which simulates contract execution without changing state and returns detailed gas usage. The Casper team also benchmarks key contracts, with results published in the documentation.
 
 ## The setup instructions have `CASPER_VERSION=1_0_0` but the current version on the test net is different (i.e. `1.2.0`). Should I change this value to reflect the latest version and directly install that version?
 No. Do the normal installation for version `1.0.0` up to the `start your node` step, then stage the upgrades in order, one by one, let your node catch up with the network, then do the bonding. (Instructions already cover all of these steps.)
